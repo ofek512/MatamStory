@@ -30,6 +30,7 @@ public:
 
 class Balrog : public Monster {
 public:
+    Balrog(string xName);
     Balrog(string xName, unsigned int xPower, unsigned int xLoot, unsigned int xDamage);
     ~Balrog() override;
     void runEvent(list<Player> players) override;
