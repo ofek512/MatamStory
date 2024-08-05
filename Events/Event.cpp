@@ -27,7 +27,7 @@ Balrog::Balrog(string xName, unsigned int xPower, unsigned int xLoot, unsigned i
 }
 Balrog::Balrog(string xName) : Monster(xName, 15, 100, 9001) {
         if (!initialized) {
-        combatPower = xPower; // Initialize combat power only once
+        combatPower = 15; // Initialize combat power only once
         initialized = true;
     }
 }
