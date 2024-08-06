@@ -12,6 +12,14 @@ void Responsible::buyPotion(Player &player) {
     }
 }
 
+string Responsible::toStr() const {
+    return "Responsible";
+}
+
+string RiskTaker::toStr() const {
+    return "RiskTaking";
+}
+
 void RiskTaker::buyPotion(Player &player) {
     if (player.getCoins() >= 5 ||
         player.getHealthPoints() < player.getMax_HP()) {

@@ -1,7 +1,6 @@
-#pragma once
-#include <string>
+#include "Player.h"
 #include "Event.h"
 
-class Encounter: public Event{
+class Encounter : public Event {
 public:
 };

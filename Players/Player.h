@@ -28,7 +28,9 @@ public:
      *
      * @return - description of the player
     */
-    string getDescription() const;
+    virtual string getJob() const = 0;
+
+    virtual string getDescription() const = 0;
 
     /**
      * Gets the name of the player
@@ -67,7 +69,7 @@ public:
 
     virtual void doEclipse();
 
-    virtual int getCombatPower();
+    virtual int getCombatPower() const;
 
     void setCoins(int);
 

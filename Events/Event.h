@@ -2,8 +2,6 @@
 
 #include "Player.h"
 
-using std::string;
-
 class Event {
 public:
     virtual ~Event() = default; //check if this should be 0

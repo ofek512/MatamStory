@@ -1,6 +1,9 @@
 #include <Player.h>
 #include "iostream"
 
+using std::cout;
+using std::endl;
+
 Player::Player(std::string Name, class Character *Character) :
         Name(Name),
         Level(1),
@@ -55,9 +58,13 @@ int Player::getMax_HP() const {
 
 void Player::doFight(Monster &monster) {
     if (getCombatPower() > monster.getPower()) {
-        Coins += monster.getCoins();
+        Coins += monster.getLoot();
         Level++;
     } else {
-        Current_HP -= monster.getDmg();
+        Current_HP -= monster.getDamage();
     }
+}
+
+string Player::getDescription() const {
+
 }
