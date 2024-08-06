@@ -19,14 +19,20 @@ public:
 class Monster : public Event {
 protected:
     string name;
-    unsigned int power;
-    unsigned int loot;
-    unsigned int damage;
+    int power;
+    int loot;
+    int damage;
 public:
     Monster(string xName, unsigned int xPower, unsigned int xLoot,
             unsigned int xDamage);
     ~Monster() override;
     void runEvent(list<Player> players) override;
+
+    int getPower() const;
+
+    int getCoins() const;
+
+    int getDmg() const;
 };
 
 

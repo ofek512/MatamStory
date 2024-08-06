@@ -1,6 +1,7 @@
 
 #pragma once
 
+#include "Event.h"
 #include "Character.h"
 #include <string>
 
@@ -17,6 +18,9 @@ protected:
     Character *Character;
 
 public:
+
+    virtual void doFight(Monster &monster);
+
     Player(string Name, class Character *Character);
     /**
      * Gets the description of the player

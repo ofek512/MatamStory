@@ -34,3 +34,18 @@ void Balrog::runEvent(list<Player> players) {
     combatPower += 2; // Increase combat power by 2 for each event
     // Implement the specific event logic for Balrog here
 }
+
+// Monster Get Power
+int Monster::getPower() const {
+    return power;
+}
+
+// Monster Get Coins
+int Monster::getCoins() const {
+    return loot;
+}
+
+// Monster
+int Monster::getDmg() const {
+    return damage;
+}

@@ -52,3 +52,12 @@ void Player::setCurrent_HP(int HP) {
 int Player::getMax_HP() const {
     return Max_HP;
 }
+
+void Player::doFight(Monster &monster) {
+    if (getCombatPower() > monster.getPower()) {
+        Coins += monster.getCoins();
+        Level++;
+    } else {
+        Current_HP -= monster.getDmg();
+    }
+}
