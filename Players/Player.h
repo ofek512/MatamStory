@@ -1,12 +1,21 @@
 
 #pragma once
-
 #include <string>
 
 using std::string;
 
 class Player {
+protected:
+    string Name;
+    int Level;
+    int Force;
+    int Coins;
+    int Current_HP;
+    int Max_HP;
+    Character Character;
+
 public:
+    Player(string Name, Character Character);
     /**
      * Gets the description of the player
      *
@@ -48,4 +57,14 @@ public:
      * @return - coins of the player
     */
     int getCoins() const;
+
+    virtual void doEclipse();
+
+    virtual int getCombatPower();
+
+    void setCoins(int);
+
+    void setCurrent_HP(int);
+
+    int getMax_HP() const;
 };
