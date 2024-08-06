@@ -55,9 +55,13 @@ int Player::getMax_HP() const {
 
 void Player::doFight(Monster &monster) {
     if (getCombatPower() > monster.getPower()) {
-        Coins += monster.getCoins();
+        Coins += monster.getLoot();
         Level++;
     } else {
-        Current_HP -= monster.getDmg();
+        Current_HP -= monster.getDamage();
     }
+}
+
+class Character* Player::getCharacter() {
+    return Character;
 }

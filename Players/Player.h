@@ -3,6 +3,7 @@
 
 #include "Event.h"
 #include "Character.h"
+#include "Monster.h"
 #include <string>
 
 using std::string;
@@ -73,4 +74,6 @@ public:
     void setCurrent_HP(int);
 
     int getMax_HP() const;
+
+    class Character* getCharacter();
 };
