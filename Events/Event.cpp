@@ -6,8 +6,9 @@ bool Balrog::initialized = false;
 
 
 // Monster Constructor
-Monster::Monster(string xName, unsigned int xPower, unsigned int xLoot, unsigned int xDamage)
-    : name(xName), power(xPower), loot(xLoot), damage(xDamage) {}
+Monster::Monster(string xName, unsigned int xPower, unsigned int xLoot,
+                 unsigned int xDamage)
+        : name(xName), power(xPower), loot(xLoot), damage(xDamage) {}
 
 // Monster Destructor
 Monster::~Monster() = default;
@@ -18,15 +19,8 @@ void Monster::runEvent(list<Player> players) {
 }
 
 // Balrog Constructor
-Balrog::Balrog(string xName, unsigned int xPower, unsigned int xLoot, unsigned int xDamage)
-    : Monster(xName, xPower, xLoot, xDamage) {
-    if (!initialized) {
-        combatPower = xPower; // Initialize combat power only once
-        initialized = true;
-    }
-}
 Balrog::Balrog(string xName) : Monster(xName, 15, 100, 9001) {
-        if (!initialized) {
+    if (!initialized) {
         combatPower = 15; // Initialize combat power only once
         initialized = true;
     }

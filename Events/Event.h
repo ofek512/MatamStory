@@ -1,4 +1,5 @@
 #pragma once
+
 #include <list>
 #include <string>
 #include "Player.h"
@@ -22,7 +23,8 @@ protected:
     unsigned int loot;
     unsigned int damage;
 public:
-    Monster(string xName, unsigned int xPower, unsigned int xLoot, unsigned int xDamage);
+    Monster(string xName, unsigned int xPower, unsigned int xLoot,
+            unsigned int xDamage);
     ~Monster() override;
     void runEvent(list<Player> players) override;
 };
@@ -31,7 +33,6 @@ public:
 class Balrog : public Monster {
 public:
     Balrog(string xName);
-    Balrog(string xName, unsigned int xPower, unsigned int xLoot, unsigned int xDamage);
     ~Balrog() override;
     void runEvent(list<Player> players) override;
 
