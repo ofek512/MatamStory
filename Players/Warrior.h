@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Player.h"
+#include "Monster.h"
 #include <string>
 
 using std::string;

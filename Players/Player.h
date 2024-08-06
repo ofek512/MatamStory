@@ -3,6 +3,7 @@
 
 #include "Event.h"
 #include "Character.h"
+#include "Monster.h"
 #include <string>
 
 using std::string;
