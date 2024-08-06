@@ -1,5 +1,7 @@
 
 #pragma once
+
+#include "Character.h"
 #include <string>
 
 using std::string;
@@ -12,10 +14,10 @@ protected:
     int Coins;
     int Current_HP;
     int Max_HP;
-    Character Character;
+    Character *Character;
 
 public:
-    Player(string Name, Character Character);
+    Player(string Name, class Character *Character);
     /**
      * Gets the description of the player
      *

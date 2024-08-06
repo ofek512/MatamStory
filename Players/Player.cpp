@@ -1,14 +1,14 @@
 #include <Player.h>
 #include "iostream"
 
-Player::Player(std::string Name, Character Character):
-    Name(Name),
-    Level(1),
-    Force(5),
-    Coins(10),
-    Current_HP(100),
-    Max_HP(100),
-    Character(Character){}
+Player::Player(std::string Name, class Character *Character) :
+        Name(Name),
+        Level(1),
+        Force(5),
+        Coins(10),
+        Current_HP(100),
+        Max_HP(100),
+        Character(Character) {}
 
 int Player::getCoins() const {
     return Coins;
@@ -43,8 +43,9 @@ void Player::setCoins(int coins) {
 }
 
 void Player::setCurrent_HP(int HP) {
-    if(Current_HP + HP > Max_HP)
+    if (HP > Max_HP) {
         Current_HP = Max_HP;
+    }
     Current_HP = HP;
 }
 

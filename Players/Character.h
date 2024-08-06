@@ -1,13 +1,22 @@
 #pragma once
+
 #include <string>
 #include <Player.h>
 
-class Character{
+class Character {
+protected:
+    string type;
 public:
-    virtual void buyPotion(Player&) = 0;
+    Character(string xtype);
+    virtual void buyPotion(Player &);
 };
 
-class Responsible: Character{
+class Responsible : public Character {
 public:
-    void buyPotion(Player&) override;
+    void buyPotion(Player &) override;
+};
+
+class RiskTaker : public Character {
+public:
+    void buyPotion(Player &) override;
 };
