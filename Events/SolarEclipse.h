@@ -1,7 +1,7 @@
-
+#pragma once
 #include "SpecialEvent.h"
 #include "Player.h"
-#include "vector"
+#include "Event.h"
 
 
 class SolarEclipse : public SpecialEvent {

@@ -1,11 +1,5 @@
-#include <list>
-#include <string>
-#include "Player.h"
-
 #pragma once
-
-using std::list;
-using std::string;
+#include "Player.h"
 
 class Event {
 public:
