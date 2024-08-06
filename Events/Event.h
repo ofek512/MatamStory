@@ -3,7 +3,6 @@
 #include <list>
 #include <string>
 #include "Player.h"
-#include "../Players/Player.h"
 
 using std::list;
 using std::string;
