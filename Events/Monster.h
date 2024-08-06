@@ -1,7 +1,8 @@
 #pragma once
-#include "Encounter.h"
-#include "Event.h"
 
+#include "Encounter.h"
+
+using std::string;
 
 class Monster : public Encounter {
 protected:
@@ -13,7 +14,7 @@ public:
     Monster(string xName = "", unsigned int xPower = 0, unsigned int xLoot = 0,
             unsigned int xDamage = 0);
     ~Monster() override;
-    void runEvent(Player&) override;
+    void runEvent(Player &) override;
     int getPower();
     int getLoot();
     int getDamage();
