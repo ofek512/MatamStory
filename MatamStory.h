@@ -6,6 +6,7 @@
 #include "Encounter.h"
 #include "SolarEclipse.h"
 #include "SpecialEvent.h"
+#include "PotionsMerchant.h"
 #include "Pack.h"
 #include <iostream>
 #include <vector>
@@ -13,6 +14,8 @@
 #include "Players/Player.h"
 #include "Events/Event.h"
 #include <memory>
+#include <sstream>
+#include <string>
 
 using std::vector;
 using std::list;

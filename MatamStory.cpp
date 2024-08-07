@@ -6,17 +6,17 @@ using std::make_unique;
 
 unique_ptr<Event> createEvent(const std::string &eventName) {
     if (eventName == "Snail") {
-        return make_unique<Snail>();
+        return make_unique<Monster>("Snail", 5, 2, 10);
     } else if (eventName == "Slime") {
-        return make_unique<Slime>();
+        return make_unique<Monster>("Slime", 12, 5, 25);
     } else if (eventName == "Pack") {
-        //need to create logic for pack creation
+
     } else if (eventName == "Balrog") {
         return make_unique<Balrog>();
     } else if (eventName == "SolarEclipse") {
-        return make_unique<SolarEclipse>();
+        return make_unique<SolarEclipse>(); //need constructor?
     } else if (eventName == "PotionsMerchant") {
-        return make_unique<PotionsMerchant>();
+        return make_unique<PotionsMerchant>(); //need constructor?
     } else {
         throw std::runtime_error("Unknown event type: " + eventName);
     }
@@ -27,6 +27,8 @@ MatamStory::MatamStory(std::istream &eventsStream,
 
     /*===== TODO: Open and read events file =====*/
     string eventName;
+    std::string firstWord;
+
     while (std::getline(eventsStream, eventName)) {
         if (!eventName.empty()) {
             events.push_back(createEvent(eventName));
