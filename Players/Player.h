@@ -76,4 +76,6 @@ public:
     void setCurrent_HP(int);
 
     int getMax_HP() const;
+
+    class Character* getCharacter();
 };

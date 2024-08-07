@@ -18,5 +18,6 @@ public:
     int getPower();
     int getLoot();
     int getDamage();
+    string getDescription() const override;
 };
 

@@ -68,3 +68,7 @@ void Player::doFight(Monster &monster) {
 string Player::getDescription() const {
 
 }
+
+class Character* Player::getCharacter() {
+    return Character;
+}
