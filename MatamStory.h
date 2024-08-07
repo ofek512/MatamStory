@@ -1,6 +1,12 @@
 
 #pragma once
 
+#include "Monster.h"
+#include "Balrog.h"
+#include "Encounter.h"
+#include "SolarEclipse.h"
+#include "SpecialEvent.h"
+#include "Pack.h"
 #include <iostream>
 #include <vector>
 #include <list>

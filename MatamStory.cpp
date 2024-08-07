@@ -1,7 +1,26 @@
 
 #include "MatamStory.h"
-
 #include "Utilities.h"
+
+using std::make_unique;
+
+unique_ptr<Event> createEvent(const std::string &eventName) {
+    if (eventName == "Snail") {
+        return make_unique<Snail>();
+    } else if (eventName == "Slime") {
+        return make_unique<Slime>();
+    } else if (eventName == "Pack") {
+        //need to create logic for pack creation
+    } else if (eventName == "Balrog") {
+        return make_unique<Balrog>();
+    } else if (eventName == "SolarEclipse") {
+        return make_unique<SolarEclipse>();
+    } else if (eventName == "PotionsMerchant") {
+        return make_unique<PotionsMerchant>();
+    } else {
+        throw std::runtime_error("Unknown event type: " + eventName);
+    }
+}
 
 MatamStory::MatamStory(std::istream &eventsStream,
                        std::istream &playersStream) {
