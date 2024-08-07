@@ -37,7 +37,7 @@ void Player::doEclipse() {
     Force--;
 }
 
-int Player::getCombatPower() {
+int Player::getCombatPower() const {
     return Force * Level;
 }
 
@@ -69,6 +69,6 @@ string Player::getDescription() const {
 
 }
 
-class Character* Player::getCharacter() {
+class Character *Player::getCharacter() {
     return Character;
 }
