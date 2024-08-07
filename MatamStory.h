@@ -2,15 +2,21 @@
 #pragma once
 
 #include <iostream>
-
+#include <vector>
+#include <list>
 #include "Players/Player.h"
 #include "Events/Event.h"
+#include <memory>
 
+using std::vector;
+using std::list;
+using std::unique_ptr;
 
-class MatamStory{
+class MatamStory {
 private:
     unsigned int m_turnIndex;
-
+    list<unique_ptr<Player>> players;
+    vector<unique_ptr<Event>> events;
     /**
      * Playes a single turn for a player
      *
@@ -18,7 +24,7 @@ private:
      *
      * @return - void
     */
-    void playTurn(Player& player);
+    void playTurn(Player &player);
 
     /**
      * Plays a single round of the game
@@ -35,6 +41,8 @@ private:
     bool isGameOver() const;
 
 public:
+    unique_ptr<Event> createEvent(
+            const string &); //reads from event txt file and transforms to a vector
     /**
      * Constructor of MatamStory class
      *
@@ -44,7 +52,7 @@ public:
      * @return - MatamStory object with the given events and players
      *
     */
-    MatamStory(std::istream& eventsStream, std::istream& playersStream);
+    MatamStory(std::istream &eventsStream, std::istream &playersStream);
 
     /**
      * Plays the entire game

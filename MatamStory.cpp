@@ -3,10 +3,16 @@
 
 #include "Utilities.h"
 
-MatamStory::MatamStory(std::istream& eventsStream, std::istream& playersStream) {
+MatamStory::MatamStory(std::istream &eventsStream,
+                       std::istream &playersStream) {
 
     /*===== TODO: Open and read events file =====*/
-
+    string eventName;
+    while (std::getline(eventsStream, eventName)) {
+        if (!eventName.empty()) {
+            events.push_back(createEvent(eventName));
+        }
+    }
     /*==========================================*/
 
 
@@ -18,7 +24,7 @@ MatamStory::MatamStory(std::istream& eventsStream, std::istream& playersStream) 
     this->m_turnIndex = 1;
 }
 
-void MatamStory::playTurn(Player& player) {
+void MatamStory::playTurn(Player &player) {
 
     /**
      * Steps to implement (there may be more, depending on your design):
