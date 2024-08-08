@@ -62,7 +62,7 @@ public:
      *
     */
     MatamStory(std::istream &eventsStream, std::istream &playersStream);
-
+    static unique_ptr<Event> parsePack(std::istringstream &stream);
     /**
      * Plays the entire game
      *
