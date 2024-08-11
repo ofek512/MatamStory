@@ -1,7 +1,8 @@
 #include "Magician.h"
+#include "Utilities.h"
 
-Magician::Magician(string Name, class Character *Character) :
-        Player(Name, Character) {}
+Magician::Magician(string Name, shared_ptr<Character> character) :
+        Player(Name, character) {}
 
 void Magician::doEclipse() {
     printTurnOutcome(getSolarEclipseMessage(*this, 1));
@@ -13,7 +14,7 @@ string Magician::getJob() const {
 }
 
 string Magician::getDescription() const {
-    return Name + ", " + getJob() + " with " + Character->toStr() +
+    return Name + ", " + getJob() + " with " + character->toStr() +
            " character " + "(level " + std::to_string(Level) + ", force " +
            std::to_string(getCombatPower());
 }

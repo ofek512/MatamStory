@@ -10,8 +10,8 @@ using std::string;
 
 class Event {
 public:
-    virtual ~Event() = default; //check if this should be 0
+    virtual ~Event() = default;
     virtual void runEvent(shared_ptr<Player> players) = 0;
-    virtual string getDescription() const; // maybe make virtual? :p
+    virtual string getDescription() const;
 };
 

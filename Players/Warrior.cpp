@@ -1,7 +1,9 @@
 #include "Warrior.h"
 
-Warrior::Warrior(string Name, struct Character *Character)
-        : Player(Name, Character) {
+#include <Character.h>
+
+Warrior::Warrior(string Name, shared_ptr<Character> character)
+        : Player(Name, character) {
     Current_HP = 150;
     Max_HP = 150;
 }
@@ -16,7 +18,7 @@ string Warrior::getJob() const {
 }
 
 string Warrior::getDescription() const {
-    return Name + ", " + getJob() + " with " + Character->toStr() +
+    return Name + ", " + getJob() + " with " + character->toStr() +
            " character " + "(level " + std::to_string(Level) + ", force " +
            std::to_string(getCombatPower());
 }

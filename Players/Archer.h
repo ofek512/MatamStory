@@ -11,7 +11,7 @@ using std::string;
 
 class Archer : public Player {
 public:
-    Archer(string Name, class Character *Character);
+    Archer(string Name, shared_ptr<Character> character);
     string getDescription() const override;
     string getJob() const override;
 };

@@ -13,11 +13,11 @@ protected:
     unsigned int loot;
     unsigned int damage;
 public:
-    Monster(string xName = "", unsigned int xPower = 0, unsigned int xLoot = 0,
-            unsigned int xDamage = 0);
+    Monster(string xName = "", unsigned int xPower = 0, unsigned int xLoot = 0, unsigned int xDamage = 0);
     void runEvent(shared_ptr<Player>) override;
     int getPower();
     int getLoot() const;
     int getDamage() const;
     string getDescription() const override;
 };
+

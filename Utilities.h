@@ -2,7 +2,6 @@
 #pragma once
 
 #include <string>
-
 #include "Players/Player.h"
 #include "Event.h"
 

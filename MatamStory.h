@@ -1,84 +1,64 @@
-
 #pragma once
 
-#include "Monster.h"
-#include "Balrog.h"
-#include "SolarEclipse.h"
-#include "SpecialEvent.h"
-#include "PotionsMerchant.h"
-#include "Pack.h"
 #include <iostream>
 #include <vector>
 #include <list>
-#include "Players/Player.h"
-#include "Warrior.h"
-#include "Magician.h"
-#include "Archer.h"
-#include "Character.h"
-#include "Events/Event.h"
 #include <memory>
-#include <sstream>
 #include <string>
-#include "Utilities.h"
+#include <sstream>
 #include <algorithm>
-
-using namespace std;
-
-
-
+#include "Players/Player.h"
+#include "Events/Event.h"
+#include "PlayerFactory.h"
+#include "EventFactory.h"
 
 class MatamStory {
 private:
-    unsigned int m_turnIndex;
-    vector<shared_ptr<Player>> players;
-    vector<shared_ptr<Player>> sortedPlayers;
-    list<unique_ptr<Event>> events;
-    /**
-     * Playes a single turn for a player
-     *
-     * @param player - the player to play the turn for
-     *
-     * @return - void
-    */
-    void playTurn(Player &player);
+ unsigned int m_turnIndex;
+ std::vector<std::shared_ptr<Player>> players;
+ std::vector<std::shared_ptr<Player>> sortedPlayers;
+ std::list<std::unique_ptr<Event>> events;
 
-    /**
-     * Plays a single round of the game
-     *
-     * @return - void
-    */
-    void playRound();
+ /**
+  * Plays a single turn for a player
+  *
+  * @param player - the player to play the turn for
+  */
+ void playTurn(Player &player);
 
-    /**
-     * Checks if the game is over
-     *
-     * @return - true if the game is over, false otherwise
-    */
-    bool isGameOver() const;
+ /**
+  * Plays a single round of the game
+  */
+ void playRound();
+
+ /**
+  * Checks if the game is over
+  *
+  * @return true if the game is over, false otherwise
+  */
+ bool isGameOver() const;
 
 public:
-    static unique_ptr<Event> createEvent(
-            const string &); //reads from event txt file and transforms to a vector
-    static shared_ptr<Player> createPlayer(const string &);
-    static bool isRisk(string &character);
+ /**
+  * Constructor of MatamStory class
+  *
+  * @param eventsStream - events input stream (file)
+  * @param playersStream - players input stream (file)
+  */
+ MatamStory(std::istream &eventsStream, std::istream &playersStream);
 
-    static bool ComparePlayers(const std::shared_ptr<Player> &p1,
-                        const std::shared_ptr<Player> &p2);
-    /**
-     * Constructor of MatamStory class
-     *
-     * @param eventsStream - events input stream (file)
-     * @param playersStream - players input stream (file)
-     *
-     * @return - MatamStory object with the given events and players
-     *
-    */
-    MatamStory(std::istream &eventsStream, std::istream &playersStream);
-    static unique_ptr<Event> parsePack(std::istringstream &stream);
-    /**
-     * Plays the entire game
-     *
-     * @return - void
-    */
-    void play();
+ /**
+  * Plays the entire game
+  */
+ void play();
+
+ /**
+  * Compares two players to sort them for the leaderboard
+  *
+  * @param p1 - first player
+  * @param p2 - second player
+  * @return true if p1 should be before p2
+  */
+ static bool ComparePlayers(const std::shared_ptr<Player> &p1, const std::shared_ptr<Player> &p2);
 };
+

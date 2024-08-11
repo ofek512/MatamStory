@@ -15,6 +15,7 @@ void Monster::runEvent(shared_ptr<Player> player) {
         player->setCoins(player->getCoins() + getLoot());
         player->setLevel(player->getLevel() + 1);
         printTurnOutcome(getEncounterWonMessage(*player, getLoot()));
+        player->afterFight();
     } else {
         player->setCurrent_HP(player->getHealthPoints() - getDamage());
         printTurnOutcome(getEncounterLostMessage(*player, getDamage()));

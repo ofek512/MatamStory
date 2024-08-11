@@ -8,7 +8,7 @@ using std::string;
 
 class Magician : public Player {
 public:
-    Magician(string Name, class Character *Character);
+    Magician(string Name, shared_ptr<Character> character);
     void doEclipse() override;
     string getDescription() const override;
     string getJob() const override;
