@@ -1,8 +1,6 @@
 
 #pragma once
 
-#include "MatamStory.h"
-#include "Event.h"
 #include "Character.h"
 #include <string>
 
@@ -31,9 +29,9 @@ public:
      *
      * @return - description of the player
     */
-    virtual string getJob() const = 0;
+    virtual string getJob() const;
 
-    virtual string getDescription() const = 0;
+    virtual string getDescription() const;
 
     void setLevel(int addition);
     /**

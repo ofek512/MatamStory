@@ -4,7 +4,7 @@
 #include <string>
 
 #include "Players/Player.h"
-#include "Events/Event.h"
+#include "Event.h"
 
 /**
  * Prints the start message of the game

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Event.h"  // Include the Encounter class definition
+#include "Utilities.h"
 
 using std::string;
 using std::shared_ptr;

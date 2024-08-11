@@ -94,7 +94,7 @@ shared_ptr<Player> MatamStory::createPlayer(const std::string &playerLine) {
             return std::make_unique<Magician>(name, &responsible);
         }
     }
-
+    throw;
 }
 
 MatamStory::MatamStory(std::istream &eventsStream,
@@ -130,7 +130,8 @@ void MatamStory::playTurn(Player &player) {
     unique_ptr<Event> event = std::move(events.front());
     events.pop_front();
     printTurnDetails(m_turnIndex++, player, *event);
-    event->runEvent(player);
+    shared_ptr<Player> playerPtr = std::make_shared<Player>(player);
+    event->runEvent(playerPtr);
     events.push_back(std::move(event));
 }
 
@@ -176,7 +177,7 @@ bool MatamStory::isGameOver() const {
 void MatamStory::play() {
     printStartMessage();
     /*===== TODO: Print start message entry for each player using "printStartPlayerEntry" =====*/
-    for (int i = 0; i < players.size(); ++i) {
+    for (int i = 0; i < int(players.size()); ++i) {
         printStartPlayerEntry(i, *players[i]);
     }
     /*=========================================================================================*/
