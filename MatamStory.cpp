@@ -1,4 +1,3 @@
-
 #include "MatamStory.h"
 
 using std::string;
@@ -41,7 +40,6 @@ unique_ptr<Event> MatamStory::parsePack(std::istringstream &stream) {
     // Return the new Pack as a unique_ptr<Event>
     return std::make_unique<Pack>(monsterArray.get(), monsters.size());
 }
-
 
 unique_ptr<Event> MatamStory::createEvent(const std::string &eventLine) {
     std::istringstream stream(eventLine);
@@ -137,9 +135,8 @@ void MatamStory::playTurn(Player &player) {
 }
 
 void MatamStory::playRound() {
-
     printRoundStart();
-
+    /*===== TODO: Play a turn for each player =====*/
     for (auto it = players.begin(); it != players.end();) {
         playTurn(**it);
         if ((*it)->getHealthPoints() == 0) {
@@ -149,9 +146,6 @@ void MatamStory::playRound() {
             ++it;  // Move to the next element if not erased
         }
     }
-
-    /*===== TODO: Play a turn for each player =====*/
-
     /*=============================================*/
 
     printRoundEnd();

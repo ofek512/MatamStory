@@ -1,8 +1,9 @@
 #pragma once
 
-#include "Encounter.h"
+#include "Encounter.h"  // Include the Encounter class definition
 
 using std::string;
+using std::shared_ptr;
 
 class Monster : public Encounter {
 protected:
@@ -20,4 +21,3 @@ public:
     int getDamage();
     string getDescription() const override;
 };
-

@@ -1,8 +1,6 @@
 #pragma once
 
 #include "Monster.h"
-#include <memory>
-#include <string>
 
 class Pack : public Monster {
 private:
