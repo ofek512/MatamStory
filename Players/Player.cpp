@@ -1,5 +1,6 @@
 #include <Player.h>
 #include "iostream"
+#include "Utilities.h"
 
 using std::cout;
 using std::endl;
@@ -33,7 +34,7 @@ int Player::getLevel() const {
     return Level;
 }
 
-int Player::setForce(int force) {
+void Player::setForce(int force) {
     if (force < 0) {
         Force = 0;
     }
@@ -67,11 +68,16 @@ int Player::getMax_HP() const {
 }
 
 string Player::getDescription() const {
-
+    return "defaul player description";
 }
 
 class Character *Player::getCharacter() {
     return Character;
+}
+
+void Player::buyPotion() {
+    Character->buyPotion();
+
 }
 
 bool Player::operator<(const Player &other) const {

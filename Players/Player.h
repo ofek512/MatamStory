@@ -33,6 +33,8 @@ public:
 
     virtual string getDescription() const;
 
+    void buyPotion();
+
     void setLevel(int addition);
     /**
      * Gets the name of the player
@@ -81,5 +83,5 @@ public:
 
     class Character *getCharacter();
 
-    int setForce(int);
+    void setForce(int);
 };

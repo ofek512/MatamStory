@@ -1,8 +1,5 @@
 #include "Character.h"
 
-void Character::buyPotion(Player &) {
-
-}
 
 void Responsible::buyPotion(Player &player) {
     int amount = 0;
@@ -12,7 +9,7 @@ void Responsible::buyPotion(Player &player) {
         player.setCurrent_HP(player.getHealthPoints() + 10);
         amount++;
     }
-    printTurnOutcome(getPotionsPurchaseMessage(*this, amount));
+    printTurnOutcome(getPotionsPurchaseMessage(player, amount));
 }
 
 string Responsible::toStr() const {
@@ -29,7 +26,7 @@ void RiskTaker::buyPotion(Player &player) {
         player.setCoins(player.getCoins() - 5);
         player.setCurrent_HP(player.getHealthPoints() + 5);
     }
-    printTurnOutcome(getPotionsPurchaseMessage(*this, 1));
+    printTurnOutcome(getPotionsPurchaseMessage(player, 1));
 }
 
 Responsible::Responsible() : Character("Responsible") {}
