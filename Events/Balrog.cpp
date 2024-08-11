@@ -15,8 +15,8 @@ Balrog::Balrog() : Monster("Balrog", 15, 100, 9001) {
 Balrog::~Balrog() = default;
 
 // Balrog runEvent Implementation
-void Balrog::runEvent(Player &player) {
-    player.doFight(*this);
+void Balrog::runEvent(shared_ptr<Player> player) {
+    player->doFight(*this);
     Power += 2; // Increase combat power by 2 for each event
     // Implement the specific event logic for Balrog here
 }

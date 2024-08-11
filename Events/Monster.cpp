@@ -11,8 +11,8 @@ Monster::Monster(string xName, unsigned int xPower, unsigned int xLoot,
 Monster::~Monster() = default;
 
 // Monster runEvent Implementation
-void Monster::runEvent(Player& player) {
-    player.doFight(*this);
+void Monster::runEvent(shared_ptr<Player> player) {
+    player->doFight(*this);
 }
 
 int Monster::getDamage() {

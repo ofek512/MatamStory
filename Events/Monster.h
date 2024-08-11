@@ -14,7 +14,7 @@ public:
     Monster(string xName = "", unsigned int xPower = 0, unsigned int xLoot = 0,
             unsigned int xDamage = 0);
     ~Monster() override;
-    void runEvent(Player &) override;
+    void runEvent(shared_ptr<Player>) override;
     int getPower();
     int getLoot();
     int getDamage();

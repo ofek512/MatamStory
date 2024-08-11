@@ -21,25 +21,12 @@
 #include <sstream>
 #include <string>
 #include "Utilities.h"
+#include <algorithm>
 
-using std::shared_ptr;
-using std::vector;
-using std::list;
-using std::unique_ptr;
+using namespace std;
 
-struct ComparePlayers {
-    bool operator()(const std::shared_ptr<Player> &p1,
-                    const std::shared_ptr<Player> &p2) const {
-        if (p1->getLevel() != p2->getLevel()) {
-            return p1->getLevel() >
-                   p2->getLevel();  // Compare levels in descending order
-        } else if (p1->getCoins() != p2->getCoins()) {
-            return p1->getCoins() > p2->getCoins();
-        }
-        return p1->getName() >
-               p2->getName();  // Lexicographical comparison of names in reverse order
-    }
-};
+
+
 
 class MatamStory {
 private:
@@ -75,6 +62,9 @@ public:
             const string &); //reads from event txt file and transforms to a vector
     static shared_ptr<Player> createPlayer(const string &);
     static bool isRisk(string &character);
+
+    static bool ComparePlayers(const std::shared_ptr<Player> &p1,
+                        const std::shared_ptr<Player> &p2);
     /**
      * Constructor of MatamStory class
      *

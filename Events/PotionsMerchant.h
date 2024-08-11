@@ -4,5 +4,5 @@
 
 class PotionsMerchant: public SpecialEvent{
 public:
-    void runEvent(Player&) override;
+    void runEvent(shared_ptr<Player>) override;
 };

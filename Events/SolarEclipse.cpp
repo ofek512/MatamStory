@@ -1,6 +1,6 @@
 #include "SolarEclipse.h"
 
-void SolarEclipse::runEvent(Player &player) {
-    player.doEclipse();
+void SolarEclipse::runEvent(shared_ptr<Player> player) {
+    player->doEclipse();
 
 }

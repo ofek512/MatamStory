@@ -156,16 +156,24 @@ void MatamStory::playRound() {
 
     printRoundEnd();
 
+    sort(sortedPlayers.begin(),sortedPlayers.end(), ComparePlayers);
+
+
     printLeaderBoardMessage();
 
     /*===== TODO: Print leaderboard entry for each player using "printLeaderBoardEntry" =====*/
-
+    int counter = 1;
+    for(auto & sortedPlayer : sortedPlayers){
+        printLeaderBoardEntry(counter++, *sortedPlayer);
+    }
     /*=======================================================================================*/
 
     printBarrier();
 }
 
 bool MatamStory::isGameOver() const {
+    if(players.empty() || sortedPlayers.back()->getLevel() == 10)
+        return true;
     /*===== TODO: Implement the game over condition =====*/
     return false; // Replace this line
     /*===================================================*/
@@ -174,7 +182,9 @@ bool MatamStory::isGameOver() const {
 void MatamStory::play() {
     printStartMessage();
     /*===== TODO: Print start message entry for each player using "printStartPlayerEntry" =====*/
-
+    for (int i = 0; i < players.size(); ++i) {
+        printStartPlayerEntry(i, *players[i]);
+    }
     /*=========================================================================================*/
     printBarrier();
 
@@ -184,7 +194,11 @@ void MatamStory::play() {
 
     printGameOver();
     /*===== TODO: Print either a "winner" message or "no winner" message =====*/
-
+    if(sortedPlayers.back()->getLevel() == 10){
+        printWinner(*sortedPlayers.back());
+    } else {
+        printNoWinners();
+    }
     /*========================================================================*/
 }
 
@@ -195,3 +209,14 @@ bool MatamStory::isRisk(string &character) {
     return false;
 }
 
+bool MatamStory::ComparePlayers(const std::shared_ptr<Player> &p1,
+                    const std::shared_ptr<Player> &p2) {
+    if (p1->getLevel() != p2->getLevel()) {
+        return p1->getLevel() >
+               p2->getLevel();  // Compare levels in descending order
+    } else if (p1->getCoins() != p2->getCoins()) {
+        return p1->getCoins() > p2->getCoins();
+    }
+    return p1->getName() >
+           p2->getName();  // Lexicographical comparison of names in reverse order
+}
