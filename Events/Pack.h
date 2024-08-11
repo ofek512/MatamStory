@@ -10,6 +10,6 @@ private:
     int size;
 
 public:
-    Pack(Monster *monstersArray, int size);
+    Pack(unique_ptr<Monster[]> monstersArray, int size);
     std::string getDescription() const override;
 };

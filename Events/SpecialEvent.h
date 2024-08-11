@@ -1,7 +1,6 @@
 #pragma once
 
-#include "Event.h"
-#include "Player.h"
+#include "Events/Event.h"
 
 class SpecialEvent : public Event {
 };

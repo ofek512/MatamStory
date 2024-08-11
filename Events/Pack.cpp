@@ -1,12 +1,12 @@
 #include "Pack.h"
 
-Pack::Pack(Monster *monstersArray, int size) : Monster("Pack", 0, 0, 0),
+Pack::Pack(unique_ptr<Monster[]> xmonsters, int size) : Monster("Pack", 0, 0, 0),
                                                size(size) {
     monsters = std::make_unique<Monster[]>(size);
 
     // Initialize the monsters array and calculate aggregated values
     for (int i = 0; i < size; ++i) {
-        monsters[i] = monstersArray[i]; // Copy each Monster
+        monsters[i] = xmonsters[i]; // Copy each Monster
         power += monsters[i].getPower();
         loot += monsters[i].getLoot();
         damage += monsters[i].getDamage();

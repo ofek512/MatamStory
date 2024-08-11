@@ -72,7 +72,7 @@ void Player::doFight(Monster &monster) {
         printTurnOutcome(getEncounterWonMessage(*this, monster.getLoot()));
     } else {
         setCurrent_HP(Current_HP - monster.getDamage());
-        printTurnOutcome(getEncounterLostMessage(*this, monster.getDamage()))
+        printTurnOutcome(getEncounterLostMessage(*this, monster.getDamage()));
     }
 }
 

@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "Players/Player.h"
+#include "Player.h"
 #include "Events/Event.h"
 
 /**

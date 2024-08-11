@@ -1,10 +1,11 @@
 #pragma once
 
-#include "Encounter.h"
+#include "Events/Event.h"
+#include <string>
 
 using std::string;
 
-class Monster : public Encounter {
+class Monster : public Event {
 protected:
     string name;
     unsigned int power;
@@ -18,6 +19,6 @@ public:
     int getPower();
     int getLoot();
     int getDamage();
-    string getDescription() const override;
+    virtual string getDescription() const override;
 };
 

@@ -2,7 +2,6 @@
 #pragma once
 
 #include "MatamStory.h"
-#include "Event.h"
 #include "Character.h"
 #include "Monster.h"
 #include <string>
