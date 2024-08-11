@@ -27,3 +27,7 @@ int Monster::getPower() {
     return power;
 }
 
+string Monster::getDescription() const {
+    return name + " (power " + std::to_string(power) + ", loot" +
+    std::to_string(loot) + ", damage" + std::to_string(damage);
+}

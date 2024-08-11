@@ -4,7 +4,7 @@
 unsigned int Balrog::Power = 15;
 bool Balrog::initialized = false;
 
-Balrog::Balrog(string xName) : Monster(xName, 15, 100, 9001) {
+Balrog::Balrog() : Monster("Balrog", 15, 100, 9001) {
     if (!initialized) {
         Power = 15; // Initialize combat power only once
         initialized = true;
@@ -15,7 +15,7 @@ Balrog::Balrog(string xName) : Monster(xName, 15, 100, 9001) {
 Balrog::~Balrog() = default;
 
 // Balrog runEvent Implementation
-void Balrog::runEvent(Player& player) {
+void Balrog::runEvent(Player &player) {
     player.doFight(*this);
     Power += 2; // Increase combat power by 2 for each event
     // Implement the specific event logic for Balrog here
