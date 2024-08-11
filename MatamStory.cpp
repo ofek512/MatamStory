@@ -1,6 +1,5 @@
 
 #include "MatamStory.h"
-#include "Utilities.h"
 
 using std::string;
 using std::make_unique;
@@ -66,6 +65,39 @@ unique_ptr<Event> MatamStory::createEvent(const std::string &eventLine) {
     }
 }
 
+/* TODO: get this shit out of this file */
+shared_ptr<Player> MatamStory::createPlayer(const std::string &playerLine) {
+    string name, job, character;
+    std::istringstream iss(playerLine);
+    iss >> name >> job >> character;
+    if (job == "Warrior") {
+        if (isRisk(character)) {
+            RiskTaker riskTaker;
+            return std::make_shared<Warrior>(name, &riskTaker);
+        } else {
+            Responsible responsible;
+            return std::make_shared<Warrior>(name, &responsible);
+        }
+    } else if (job == "Archer") {
+        if (isRisk(character)) {
+            RiskTaker riskTaker;
+            return std::make_shared<Archer>(name, &riskTaker);
+        } else {
+            Responsible responsible;
+            return std::make_shared<Archer>(name, &responsible);
+        }
+
+    } else if (job == "Magician") {
+        if (isRisk(character)) {
+            RiskTaker riskTaker;
+            return std::make_unique<Magician>(name, &riskTaker);
+        } else {
+            Responsible responsible;
+            return std::make_unique<Magician>(name, &responsible);
+        }
+    }
+
+}
 
 MatamStory::MatamStory(std::istream &eventsStream,
                        std::istream &playersStream) {
@@ -81,7 +113,15 @@ MatamStory::MatamStory(std::istream &eventsStream,
 
 
     /*===== TODO: Open and Read players file =====*/
+    string playerLine;
+    while (std::getline(playersStream, playerLine)) {
+        if (!playerLine.empty()) {
+            shared_ptr<Player> player = createPlayer(playerLine);
+            players.push_back(player);
+            sortedPlayers.push_back(player);
 
+        }
+    }
     /*============================================*/
 
 
@@ -89,21 +129,26 @@ MatamStory::MatamStory(std::istream &eventsStream,
 }
 
 void MatamStory::playTurn(Player &player) {
-
-    /**
-     * Steps to implement (there may be more, depending on your design):
-     * 1. Get the next event from the events list
-     * 2. Print the turn details with "printTurnDetails"
-     * 3. Play the event
-     * 4. Print the turn outcome with "printTurnOutcome"
-    */
-
-    m_turnIndex++;
+    unique_ptr<Event> event = std::move(events.front());
+    events.pop_front();
+    printTurnDetails(m_turnIndex++, player, *event);
+    event->runEvent(player);
+    events.push_back(std::move(event));
 }
 
 void MatamStory::playRound() {
 
     printRoundStart();
+
+    for (auto it = players.begin(); it != players.end();) {
+        playTurn(**it);
+        if ((*it)->getHealthPoints() == 0) {
+            it = players.erase(
+                    it);  // Erase returns the iterator to the next element
+        } else {
+            ++it;  // Move to the next element if not erased
+        }
+    }
 
     /*===== TODO: Play a turn for each player =====*/
 
@@ -141,5 +186,12 @@ void MatamStory::play() {
     /*===== TODO: Print either a "winner" message or "no winner" message =====*/
 
     /*========================================================================*/
+}
+
+bool MatamStory::isRisk(string &character) {
+    if (character == "RiskTaking") {
+        return true;
+    }
+    return false;
 }
 

@@ -2,4 +2,5 @@
 
 void SolarEclipse::runEvent(Player &player) {
     player.doEclipse();
+
 }

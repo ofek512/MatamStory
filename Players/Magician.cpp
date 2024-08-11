@@ -7,6 +7,7 @@ Magician::Magician(string Name, class Character *Character) :
         Player(Name, Character) {}
 
 void Magician::doEclipse() {
+    printTurnOutcome(getSolarEclipseMessage(*this, 1));
     Force++;
 }
 

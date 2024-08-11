@@ -1,10 +1,12 @@
 
 #pragma once
 
+#include "MatamStory.h"
 #include "Event.h"
 #include "Character.h"
 #include "Monster.h"
 #include <string>
+//#include "Utilities.h"
 
 using std::string;
 
@@ -19,6 +21,8 @@ protected:
     Character *Character;
 
 public:
+
+    bool operator<(const Player &other) const;
 
     virtual void doFight(Monster &monster);
 
@@ -77,5 +81,7 @@ public:
 
     int getMax_HP() const;
 
-    class Character* getCharacter();
+    class Character *getCharacter();
+
+    int setForce(int);
 };

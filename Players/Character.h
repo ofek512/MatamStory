@@ -14,12 +14,14 @@ public:
 
 class Responsible : public Character {
 public:
+    Responsible();
     void buyPotion(Player &) override;
     string toStr() const override;
 };
 
 class RiskTaker : public Character {
 public:
+    RiskTaker();
     void buyPotion(Player &) override;
     string toStr() const override;
 };

@@ -33,8 +33,15 @@ int Player::getLevel() const {
     return Level;
 }
 
+int Player::setForce(int force) {
+    if(force < 0)
+        Force = 0;
+    Force = force;
+}
+
 void Player::doEclipse() {
-    Force--;
+    printTurnOutcome(getSolarEclipseMessage(*this, -1));
+    setForce(Force - 1);
 }
 
 int Player::getCombatPower() const {
@@ -48,6 +55,8 @@ void Player::setCoins(int coins) {
 void Player::setCurrent_HP(int HP) {
     if (HP > Max_HP) {
         Current_HP = Max_HP;
+    } else if (HP < 0){
+        Current_HP = 0;
     }
     Current_HP = HP;
 }
@@ -60,8 +69,10 @@ void Player::doFight(Monster &monster) {
     if (getCombatPower() > monster.getPower()) {
         Coins += monster.getLoot();
         Level++;
+        printTurnOutcome(getEncounterWonMessage(*this, monster.getLoot()));
     } else {
-        Current_HP -= monster.getDamage();
+        setCurrent_HP(Current_HP - monster.getDamage());
+        printTurnOutcome(getEncounterLostMessage(*this, monster.getDamage()))
     }
 }
 
@@ -71,4 +82,11 @@ string Player::getDescription() const {
 
 class Character *Player::getCharacter() {
     return Character;
+}
+
+bool Player::operator<(const Player& other) const {
+    if (this->Level != other.Level) {
+        return this->Level < other.Level;
+    }
+    return this->Name < other.Name;  // Lexicographical comparison of names
 }
