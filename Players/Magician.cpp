@@ -1,7 +1,4 @@
-#include <Magician.h>
-#include "Player.h"
-
-#pragma once
+#include "Magician.h"
 
 Magician::Magician(string Name, class Character *Character) :
         Player(Name, Character) {}

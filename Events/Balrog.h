@@ -5,7 +5,6 @@
 class Balrog : public Monster {
 public:
     Balrog();
-    ~Balrog() override;
     void runEvent(shared_ptr<Player>) override;
 
 private:

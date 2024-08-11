@@ -34,8 +34,9 @@ int Player::getLevel() const {
 }
 
 int Player::setForce(int force) {
-    if(force < 0)
+    if (force < 0) {
         Force = 0;
+    }
     Force = force;
 }
 
@@ -55,7 +56,7 @@ void Player::setCoins(int coins) {
 void Player::setCurrent_HP(int HP) {
     if (HP > Max_HP) {
         Current_HP = Max_HP;
-    } else if (HP < 0){
+    } else if (HP < 0) {
         Current_HP = 0;
     }
     Current_HP = HP;
@@ -63,17 +64,6 @@ void Player::setCurrent_HP(int HP) {
 
 int Player::getMax_HP() const {
     return Max_HP;
-}
-
-void Player::doFight(Monster &monster) {
-    if (getCombatPower() > monster.getPower()) {
-        Coins += monster.getLoot();
-        Level++;
-        printTurnOutcome(getEncounterWonMessage(*this, monster.getLoot()));
-    } else {
-        setCurrent_HP(Current_HP - monster.getDamage());
-        printTurnOutcome(getEncounterLostMessage(*this, monster.getDamage()))
-    }
 }
 
 string Player::getDescription() const {
@@ -84,9 +74,17 @@ class Character *Player::getCharacter() {
     return Character;
 }
 
-bool Player::operator<(const Player& other) const {
+bool Player::operator<(const Player &other) const {
     if (this->Level != other.Level) {
         return this->Level < other.Level;
     }
     return this->Name < other.Name;  // Lexicographical comparison of names
+}
+
+void Player::afterFight() {
+
+}
+
+void Player::setLevel(int addition) {
+    Level += addition;
 }

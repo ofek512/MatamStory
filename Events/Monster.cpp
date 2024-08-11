@@ -8,18 +8,24 @@ Monster::Monster(string xName, unsigned int xPower, unsigned int xLoot,
         : name(xName), power(xPower), loot(xLoot), damage(xDamage) {}
 
 // Monster Destructor
-Monster::~Monster() = default;
 
 // Monster runEvent Implementation
 void Monster::runEvent(shared_ptr<Player> player) {
-    player->doFight(*this);
+    if (player->getCombatPower() > getPower()) {
+        player->setCoins(player->getCoins() + getLoot());
+        player->setLevel(player->getLevel() + 1);
+        printTurnOutcome(getEncounterWonMessage(*player, getLoot()));
+    } else {
+        player->setCurrent_HP(player->getHealthPoints() - getDamage());
+        printTurnOutcome(getEncounterLostMessage(*player, getDamage()))
+    }
 }
 
-int Monster::getDamage() {
+int Monster::getDamage() const {
     return damage;
 }
 
-int Monster::getLoot() {
+int Monster::getLoot() const {
     return loot;
 }
 

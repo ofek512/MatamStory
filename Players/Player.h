@@ -4,9 +4,8 @@
 #include "MatamStory.h"
 #include "Event.h"
 #include "Character.h"
-#include "Monster.h"
 #include <string>
-//#include "Utilities.h"
+
 
 using std::string;
 
@@ -22,9 +21,9 @@ protected:
 
 public:
 
-    bool operator<(const Player &other) const;
+    virtual void afterFight();
 
-    virtual void doFight(Monster &monster);
+    bool operator<(const Player &other) const;
 
     Player(string Name, class Character *Character);
     /**
@@ -36,6 +35,7 @@ public:
 
     virtual string getDescription() const = 0;
 
+    void setLevel(int addition);
     /**
      * Gets the name of the player
      *

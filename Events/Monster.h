@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Encounter.h"  // Include the Encounter class definition
+#include "Event.h"  // Include the Encounter class definition
 
 using std::string;
 using std::shared_ptr;
 
-class Monster : public Encounter {
+class Monster : public Event {
 protected:
     string name;
     unsigned int power;
@@ -14,10 +14,9 @@ protected:
 public:
     Monster(string xName = "", unsigned int xPower = 0, unsigned int xLoot = 0,
             unsigned int xDamage = 0);
-    ~Monster() override;
     void runEvent(shared_ptr<Player>) override;
     int getPower();
-    int getLoot();
-    int getDamage();
+    int getLoot() const;
+    int getDamage() const;
     string getDescription() const override;
 };

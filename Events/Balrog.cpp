@@ -1,4 +1,5 @@
 #include "Balrog.h"
+#include "Player.h"
 
 // Initialize static members
 unsigned int Balrog::Power = 15;
@@ -16,7 +17,13 @@ Balrog::~Balrog() = default;
 
 // Balrog runEvent Implementation
 void Balrog::runEvent(shared_ptr<Player> player) {
-    player->doFight(*this);
-    Power += 2; // Increase combat power by 2 for each event
-    // Implement the specific event logic for Balrog here
+    if (player->getCombatPower() > getPower()) {
+        player->setCoins(player->getCoins() + getLoot());
+        player->setLevel(player->getLevel() + 1);
+        printTurnOutcome(getEncounterWonMessage(*player, getLoot()));
+    } else {
+        player->setCurrent_HP(player->getHealthPoints() - getDamage());
+        printTurnOutcome(getEncounterLostMessage(*player, getDamage()))
+    }
+    power += 2;
 }
