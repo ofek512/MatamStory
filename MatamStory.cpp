@@ -14,7 +14,10 @@ MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) 
         if (!playerLine.empty()) {
             std::istringstream iss(playerLine);
             std::string name, job, character;
-            iss >> name >> job >> character;
+            if(!(iss >> name >> job >> character)) {
+                std::cout << "Invalid Player File" << std::endl;
+                exit(1);
+            }
             std::shared_ptr<Player> player = PlayerFactory::createPlayer(name, job, character);
             players.push_back(player);
             sortedPlayers.push_back(player);
@@ -67,7 +70,7 @@ void MatamStory::play() {
     printStartMessage();
 
     for (size_t i = 0; i < players.size(); ++i) {
-        printStartPlayerEntry(i, *players[i]);
+        printStartPlayerEntry(i + 1, *players[i]);
     }
 
     printBarrier();

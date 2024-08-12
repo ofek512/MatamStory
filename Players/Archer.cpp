@@ -14,5 +14,5 @@ string Archer::getJob() const {
 string Archer::getDescription() const {
     return Name + ", " + getJob() + " with " + character->toStr() +
            " character " + "(level " + std::to_string(Level) + ", force " +
-           std::to_string(getCombatPower());
+           std::to_string(Force) + ")";
 }

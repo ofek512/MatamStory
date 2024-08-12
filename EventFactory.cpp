@@ -22,7 +22,7 @@ std::unique_ptr<Event> parsePack(std::istringstream &stream) {
         } else if (subEvent == "Balrog") {
             monsters.push_back(std::make_unique<Balrog>());
         } else {
-            throw std::runtime_error("Unknown monster type in pack: " + subEvent);
+            throw std::runtime_error("Invalid Events File");
         }
     }
 
@@ -52,6 +52,6 @@ std::unique_ptr<Event> EventFactory::createEvent(const std::string& eventLine) {
     } else if (eventName == "PotionsMerchant") {
         return std::make_unique<PotionsMerchant>();
     } else {
-        throw std::runtime_error("Unknown event type: " + eventName);
+        throw std::runtime_error("Invalid Events File");
     }
 }

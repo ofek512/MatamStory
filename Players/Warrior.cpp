@@ -18,9 +18,7 @@ string Warrior::getJob() const {
 }
 
 string Warrior::getDescription() const {
-    return Name + ", " + getJob() + " with " + character->toStr() +
-           " character " + "(level " + std::to_string(Level) + ", force " +
-           std::to_string(getCombatPower());
+    return Name + ", " + getJob() + " with " + character->toStr() + " character " + "(level " + std::to_string(Level) + ", force " + std::to_string(Force) + ")";
 }
 
 void Warrior::afterFight() {

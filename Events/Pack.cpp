@@ -14,8 +14,8 @@ Pack::Pack(Monster *monstersArray, int size) : Monster("Pack", 0, 0, 0),
 }
 
 std::string Pack::getDescription() const {
-    return "Pack of " + std::to_string(size) + " members (power: " +
+    return "Pack of " + std::to_string(size) + " members (power " +
            std::to_string(power) +
-           ", loot: " + std::to_string(loot) + ", damage: " +
+           ", loot " + std::to_string(loot) + ", damage " +
            std::to_string(damage) + ")";
 }
