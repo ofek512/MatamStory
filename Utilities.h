@@ -3,7 +3,7 @@
 
 #include <string>
 #include "Players/Player.h"
-#include "Event.h"
+#include "Events/Event.h"
 
 /**
  * Prints the start message of the game

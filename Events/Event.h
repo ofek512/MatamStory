@@ -2,11 +2,11 @@
 
 #include <memory>  // Include necessary headers
 #include <string>  // Include necessary headers
-#include "Player.h"
+#include "./Players/Player.h"
 
 using std::shared_ptr;
 using std::string;
-
+class Player;
 
 class Event {
 public:

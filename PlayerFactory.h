@@ -2,7 +2,7 @@
 
 #include <memory>
 #include <string>
-#include "Player.h"
+#include "Players/Player.h"
 #include "Warrior.h"
 #include "Magician.h"
 #include "Archer.h"

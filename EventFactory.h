@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Monster.h"
-#include "Balrog.h"
-#include "SolarEclipse.h"
-#include "PotionsMerchant.h"
-#include "Pack.h"
+#include "Events/Monster.h"
+#include "Events/Balrog.h"
+#include "Events/SolarEclipse.h"
+#include "Events/PotionsMerchant.h"
+#include "Events/Pack.h"
 #include <sstream>
 #include <vector>
 
