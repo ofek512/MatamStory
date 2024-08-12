@@ -1,4 +1,5 @@
 #include "PlayerFactory.h"
+#include <iostream>
 
 std::shared_ptr<Player> PlayerFactory::createPlayer(const std::string& name, const std::string& job, const std::string& character) {
     std::shared_ptr<Character> charPtr;
