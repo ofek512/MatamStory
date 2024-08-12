@@ -24,7 +24,7 @@ private:
   *
   * @param player - the player to play the turn for
   */
- void playTurn(Player &player);
+ void playTurn(shared_ptr<Player> player);
 
  /**
   * Plays a single round of the game

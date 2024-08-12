@@ -24,11 +24,11 @@ MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) 
     this->m_turnIndex = 1;
 }
 
-void MatamStory::playTurn(Player &player) {
+void MatamStory::playTurn(shared_ptr<Player> player) {
     std::unique_ptr<Event> event = std::move(events.front());
     events.pop_front();
-    printTurnDetails(m_turnIndex++, player, *event);
-    event->runEvent(std::make_shared<Player>(player));
+    printTurnDetails(m_turnIndex++, *player, *event);
+    event->runEvent(player);
     events.push_back(std::move(event));
 }
 
@@ -36,7 +36,7 @@ void MatamStory::playRound() {
     printRoundStart();
 
     for (auto it = players.begin(); it != players.end();) {
-        playTurn(**it);
+        playTurn(*it);
         if ((*it)->getHealthPoints() == 0) {
             it = players.erase(it);  // Erase returns the iterator to the next element
         } else {
