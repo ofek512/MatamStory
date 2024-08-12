@@ -15,7 +15,7 @@ MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) 
             std::istringstream iss(playerLine);
             std::string name, job, character;
             if(!(iss >> name >> job >> character)) {
-                std::cout << "Invalid Player File" << std::endl;
+                std::cout << "Invalid Players File" << std::endl;
                 exit(1);
             }
             std::shared_ptr<Player> player = PlayerFactory::createPlayer(name, job, character);

@@ -9,7 +9,7 @@ std::shared_ptr<Player> PlayerFactory::createPlayer(const std::string& name, con
     } else if (character == "Responsible") {
         charPtr = std::make_shared<Responsible>();
     } else {
-        throw std::runtime_error("Unknown character type: " + character);
+        throw std::runtime_error("Invalid Players File");
     }
 
     if (job == "Warrior") {
@@ -19,6 +19,6 @@ std::shared_ptr<Player> PlayerFactory::createPlayer(const std::string& name, con
     } else if (job == "Magician") {
         return std::make_shared<Magician>(name, charPtr);
     } else {
-        throw std::runtime_error("Unknown job type: " + job);
+        throw std::runtime_error("Invalid Players File");
     }
 }
