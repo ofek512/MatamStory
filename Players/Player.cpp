@@ -49,7 +49,7 @@ bool Player::operator<(const Player &other) const {
 
 void Player::afterFight() {}
 
-void Player::setLevel(int addition) { Level += addition; }
+void Player::setLevel(int addition) { Level = addition; }
 
 string Player::getJob() const {
     return "";

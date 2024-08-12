@@ -21,7 +21,7 @@ string RiskTaker::toStr() const {
 }
 
 void RiskTaker::buyPotion(Player &player) {
-    if (player.getCoins() >= 5 && player.getHealthPoints() < player.getMax_HP()) {
+    if (player.getCoins() >= 5 && player.getHealthPoints() < player.getMax_HP() && player.getHealthPoints() < 50) {
         player.setCoins(player.getCoins() - 5);
         player.setCurrent_HP(player.getHealthPoints() + 5);
     }
