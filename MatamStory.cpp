@@ -13,7 +13,7 @@ MatamStory::MatamStory(std::istream &eventsStream,
             if (event) {
                 events.push_back(std::move(event));
             } else {
-                throw std::runtime_error("Invalid event format in events file");
+                throw std::runtime_error("Invalid Players File");
             }
         }
     }
@@ -25,7 +25,7 @@ MatamStory::MatamStory(std::istream &eventsStream,
             std::string name, job, character;
             if (!(iss >> name >> job >> character)) {
                 throw std::runtime_error(
-                        "Invalid player format in players file");
+                        "Invalid Players File");
             }
             try {
                 auto player = PlayerFactory::createPlayer(name, job, character);
@@ -34,10 +34,10 @@ MatamStory::MatamStory(std::istream &eventsStream,
                     sortedPlayers.push_back(players.back());
                 } else {
                     throw std::runtime_error(
-                            "Invalid player data in players file");
+                            "Invalid Players File");
                 }
             } catch (const std::runtime_error &e) {
-                throw std::runtime_error("Invalid player data in players file");
+                throw std::runtime_error("Invalid Players File");
             }
         }
     }
