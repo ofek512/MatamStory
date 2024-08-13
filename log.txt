@@ -1,0 +1,626 @@
+* commit 0d5283b582888ddb2ec6ca751d178dedfdbf71b4
+| Author: Ofek <ofek5202@gmail.com>
+| Date:   Tue Aug 13 11:17:38 2024 +0300
+| 
+|     add description functions to potion and eclipse
+| 
+|  Events/PotionsMerchant.cpp | 4 ++++
+|  Events/PotionsMerchant.h   | 4 +++-
+|  Events/SolarEclipse.cpp    | 4 ++++
+|  Events/SolarEclipse.h      | 1 +
+|  Players/Character.cpp      | 9 +++++++--
+|  5 files changed, 19 insertions(+), 3 deletions(-)
+| 
+* commit 949221c53959e6a9214fe2642638c95d699e519e
+| Author: Ofek <ofek5202@gmail.com>
+| Date:   Tue Aug 13 11:05:52 2024 +0300
+| 
+|     move factories into their folders
+| 
+|  EventFactory.cpp => Events/EventFactory.cpp    |  0
+|  EventFactory.h => Events/EventFactory.h        |  0
+|  MatamStory.h                                   | 83 ++++++++++++------------
+|  PlayerFactory.cpp => Players/PlayerFactory.cpp |  0
+|  PlayerFactory.h => Players/PlayerFactory.h     |  0
+|  5 files changed, 42 insertions(+), 41 deletions(-)
+| 
+* commit 1944016bfe9182f48d8ed2efe77b739009a0e072
+| Author: ofek5 <ofekikosh123@gmail.com>
+| Date:   Tue Aug 13 00:07:02 2024 +0300
+| 
+|     add error handling for invalid job or character types
+| 
+|  MatamStory.cpp    | 2 +-
+|  PlayerFactory.cpp | 4 ++--
+|  2 files changed, 3 insertions(+), 3 deletions(-)
+| 
+* commit d032f4560941c6c063d2f4204ee6bb9e6819c8ad
+| Author: ofek5 <ofekikosh123@gmail.com>
+| Date:   Tue Aug 13 00:05:30 2024 +0300
+| 
+|     add error handling for event and player files. add correction of printing in MatamStory.cpp
+| 
+|  EventFactory.cpp     | 4 ++--
+|  Events/Monster.cpp   | 4 ++--
+|  Events/Pack.cpp      | 4 ++--
+|  MatamStory.cpp       | 7 +++++--
+|  Players/Archer.cpp   | 2 +-
+|  Players/Magician.cpp | 2 +-
+|  Players/Warrior.cpp  | 4 +---
+|  7 files changed, 14 insertions(+), 13 deletions(-)
+| 
+* commit ceff9a49989c7a1ff211a5e7afd7f6379df7f2f2
+| Author: pavel <pavelrussko@gmail.com>
+| Date:   Mon Aug 12 15:56:55 2024 +0300
+| 
+|     Add pack descrtiption
+| 
+|  PlayerFactory.cpp | 1 +
+|  1 file changed, 1 insertion(+)
+| 
+* commit 7439efc2fd0f0088e961b29ffb91dd5bb46383c8
+| Author: pavel <pavelrussko@gmail.com>
+| Date:   Mon Aug 12 15:47:25 2024 +0300
+| 
+|     Add pack descrtiption
+| 
+|  Players/Character.cpp | 2 +-
+|  Players/Player.cpp    | 2 +-
+|  2 files changed, 2 insertions(+), 2 deletions(-)
+| 
+* commit 15b90370ea85935f8e042550f9734cb9254d07cb
+| Author: pavel <pavelrussko@gmail.com>
+| Date:   Mon Aug 12 15:31:44 2024 +0300
+| 
+|     Add pack descrtiption
+| 
+|  Events/Balrog.h | 3 ---
+|  Events/Event.h  | 3 +--
+|  MatamStory.cpp  | 8 ++++----
+|  MatamStory.h    | 2 +-
+|  4 files changed, 6 insertions(+), 10 deletions(-)
+| 
+* commit 4311ae22cefeafd75bb020f303a4cbc7df08c3d5
+| Author: pavel <pavelrussko@gmail.com>
+| Date:   Mon Aug 12 12:12:10 2024 +0300
+| 
+|     Add pack descrtiption
+| 
+|  EventFactory.h     | 10 +++++-----
+|  Events/Event.h     |  4 ++--
+|  PlayerFactory.h    |  2 +-
+|  Players/Player.cpp |  4 ++++
+|  Utilities.h        |  2 +-
+|  5 files changed, 13 insertions(+), 9 deletions(-)
+| 
+* commit e831bd6bbdef54f6c683d1ff9e8d78dc501a1a75
+| Author: ofek5 <ofekikosh123@gmail.com>
+| Date:   Mon Aug 12 00:15:21 2024 +0300
+| 
+|     Add factory, fix most problems of circular dependency, need to make the job into variable and not inherit from player
+| 
+|  EventFactory.cpp           |  57 ++++++++++++++
+|  EventFactory.h             |  14 ++++
+|  Events/Balrog.cpp          |  15 +---
+|  Events/Balrog.h            |   3 +-
+|  Events/Event.h             |   4 +-
+|  Events/Monster.cpp         |   1 +
+|  Events/Monster.h           |   4 +-
+|  Events/PotionsMerchant.cpp |   3 +-
+|  MatamStory.cpp             | 174 +++++++------------------------------------
+|  MatamStory.h               | 114 ++++++++++++----------------
+|  PlayerFactory.cpp          |  23 ++++++
+|  PlayerFactory.h            |  15 ++++
+|  Players/Archer.cpp         |   8 +-
+|  Players/Archer.h           |   2 +-
+|  Players/Character.cpp      |  11 ++-
+|  Players/Character.h        |  16 ++--
+|  Players/Magician.cpp       |   7 +-
+|  Players/Magician.h         |   2 +-
+|  Players/Player.cpp         |  86 ++++++---------------
+|  Players/Player.h           |  99 ++++++++----------------
+|  Players/Warrior.cpp        |   8 +-
+|  Players/Warrior.h          |   5 +-
+|  Utilities.h                |   1 -
+|  23 files changed, 275 insertions(+), 397 deletions(-)
+| 
+* commit 8c95614a25fbb0b03943dcbe52ce3e0bbb288439
+| Author: ofek5 <ofekikosh123@gmail.com>
+| Date:   Sun Aug 11 21:24:05 2024 +0300
+| 
+|     Fix including errors
+| 
+|  Events/Event.cpp      |  3 +++
+|  Players/Character.cpp |  7 ++-----
+|  Players/Character.h   |  8 +++++---
+|  Players/Player.cpp    | 10 ++++++++--
+|  Players/Player.h      |  4 +++-
+|  5 files changed, 21 insertions(+), 11 deletions(-)
+| 
+* commit 03ae408b85dcfd374606f46336ee80ccc4686888
+| Author: ofek5 <ofekikosh123@gmail.com>
+| Date:   Sun Aug 11 20:44:34 2024 +0300
+| 
+|     Fix including errors
+| 
+|  Events/Encounter.cpp       | 1 -
+|  Events/Encounter.h         | 0
+|  Events/Monster.cpp         | 2 +-
+|  Events/Monster.h           | 1 +
+|  Events/PotionsMerchant.cpp | 2 +-
+|  MatamStory.cpp             | 7 ++++---
+|  MatamStory.h               | 1 -
+|  Players/Character.h        | 9 +++++----
+|  Players/Player.h           | 6 ++----
+|  Utilities.h                | 2 +-
+|  10 files changed, 15 insertions(+), 16 deletions(-)
+| 
+* commit d1652e4f605616f495c306b5f7eaf7959c416213
+| Author: Ofek <ofek5202@gmail.com>
+| Date:   Sun Aug 11 17:56:05 2024 +0300
+| 
+|     move do fight to monster and not player
+| 
+|  Events/Balrog.cpp     | 13 ++++++++++---
+|  Events/Balrog.h       |  1 -
+|  Events/Encounter.h    |  6 ------
+|  Events/Event.h        |  5 ++---
+|  Events/Monster.cpp    | 14 ++++++++++----
+|  Events/Monster.h      |  9 ++++-----
+|  Events/SolarEclipse.h |  1 +
+|  Players/Magician.cpp  |  5 +----
+|  Players/Magician.h    |  4 ++--
+|  Players/Player.cpp    | 28 +++++++++++++---------------
+|  Players/Player.h      |  8 ++++----
+|  Players/Warrior.cpp   | 15 +++++----------
+|  Players/Warrior.h     |  2 +-
+|  13 files changed, 53 insertions(+), 58 deletions(-)
+| 
+* commit 67a9e51940016e1571b6ee5b53ee12d730abfee6
+| Author: Ofek <ofek5202@gmail.com>
+| Date:   Sun Aug 11 17:13:16 2024 +0300
+| 
+|     merging changes into main
+| 
+|  Events/Balrog.h       | 1 -
+|  Events/Encounter.h    | 1 -
+|  Events/Event.h        | 9 ++++++++-
+|  Events/Monster.h      | 4 ++--
+|  Events/Pack.h         | 2 --
+|  Events/SolarEclipse.h | 3 ---
+|  Events/SpecialEvent.h | 2 +-
+|  MatamStory.cpp        | 8 +-------
+|  8 files changed, 12 insertions(+), 18 deletions(-)
+| 
+* commit f8d5aea6b5d7085eb9ea3858626d06441589a6ea
+| Author: pavelrussko <pavelrussko@gmail.com>
+| Date:   Sun Aug 11 16:54:03 2024 +0300
+| 
+|     Add pack descrtiption
+| 
+|  Events/Balrog.cpp          |  4 ++--
+|  Events/Balrog.h            |  2 +-
+|  Events/Event.h             |  2 +-
+|  Events/Monster.cpp         |  4 ++--
+|  Events/Monster.h           |  2 +-
+|  Events/PotionsMerchant.cpp |  4 ++--
+|  Events/PotionsMerchant.h   |  2 +-
+|  Events/SolarEclipse.cpp    |  4 ++--
+|  Events/SolarEclipse.h      |  4 ++--
+|  MatamStory.cpp             | 31 ++++++++++++++++++++++++++++---
+|  MatamStory.h               | 24 +++++++-----------------
+|  11 files changed, 49 insertions(+), 34 deletions(-)
+|   
+| * commit 9f87ef9cee7eda08b172732bd4965eb36f17d948
+|/  Author: ofek5 <ofekikosh123@gmail.com>
+|   Date:   Sun Aug 11 22:15:13 2024 +0300
+|   
+|       err
+|   
+|    Events/Balrog.h       | 1 -
+|    Events/Encounter.cpp  | 1 -
+|    Events/Encounter.h    | 7 -------
+|    Events/Event.h        | 4 ++--
+|    Events/Monster.h      | 7 ++++---
+|    Events/Pack.cpp       | 4 ++--
+|    Events/Pack.h         | 2 +-
+|    Events/SolarEclipse.h | 2 --
+|    Events/SpecialEvent.h | 3 +--
+|    MatamStory.h          | 1 -
+|    Players/Player.cpp    | 2 +-
+|    Players/Player.h      | 1 -
+|    Utilities.h           | 2 +-
+|    13 files changed, 12 insertions(+), 25 deletions(-)
+|   
+*   commit 065f76a0477d85ed73033f06393d6bb30817d47e
+|\  Merge: 6448570 8f79180
+| | Author: Ofek <ofek5202@gmail.com>
+| | Date:   Sun Aug 11 14:42:03 2024 +0300
+| | 
+| |     Merge remote-tracking branch 'origin/EventOfek'
+| | 
+| * commit 8f79180da834995f3cdff96d69c3815fc0da5f3f
+| | Author: Ofek <ofek5202@gmail.com>
+| | Date:   Sun Aug 11 14:33:31 2024 +0300
+| | 
+| |     impl the constructor, play turn and partially play round
+| | 
+| |  Events/SolarEclipse.cpp |  1 +
+| |  MatamStory.cpp          | 74 ++++++++++++++++++++++++++++++++++++++-------
+| |  MatamStory.h            | 29 ++++++++++++++++--
+| |  Players/Character.cpp   | 10 +++++-
+| |  Players/Character.h     |  2 ++
+| |  Players/Magician.cpp    |  1 +
+| |  Players/Player.cpp      | 22 ++++++++++++--
+| |  Players/Player.h        |  8 ++++-
+| |  8 files changed, 129 insertions(+), 18 deletions(-)
+| | 
+| * commit 3b44250fd7d3248d5e4c2d64663a67a50f9d38fb
+| | Author: Ofek <ofek5202@gmail.com>
+| | Date:   Thu Aug 8 13:59:44 2024 +0300
+| | 
+| |     impl parsePack and createEvent functions. finished half of the constructor.
+| | 
+| |  Events/Pack.cpp | 18 +++++++++-----
+| |  Events/Pack.h   | 15 ++++++++----
+| |  MatamStory.cpp  | 70 +++++++++++++++++++++++++++++++++++++++++++----------
+| |  MatamStory.h    |  2 +-
+| |  4 files changed, 80 insertions(+), 25 deletions(-)
+| | 
+| * commit 0968eb8ffb45a3b41c1836410c2665ec354607d7
+| | Author: Ofek <ofek5202@gmail.com>
+| | Date:   Wed Aug 7 13:15:16 2024 +0300
+| | 
+| |     partial modification of createevent function. need impl of pack case and in constructor of matamstory fix the logic. we need to have first word of the line and also the line itself in the createevent function
+| | 
+| |  MatamStory.cpp | 12 +++++++-----
+| |  MatamStory.h   |  3 +++
+| |  2 files changed, 10 insertions(+), 5 deletions(-)
+| | 
+| * commit 1dbe6167f622f9f7c3d31265b8a29b1232161398
+| | Author: Ofek <ofek5202@gmail.com>
+| | Date:   Wed Aug 7 12:33:19 2024 +0300
+| | 
+| |     merge branches
+| | 
+| |  Players/Player.cpp | 4 ++--
+| |  1 file changed, 2 insertions(+), 2 deletions(-)
+| |   
+| *   commit 077485ef7d6a6c6325bb616c06bbd9670a8868e5
+| |\  Merge: 769e15f 72d722e
+| | | Author: Ofek <ofek5202@gmail.com>
+| | | Date:   Wed Aug 7 12:32:35 2024 +0300
+| | | 
+| | |     Merge remote-tracking branch 'origin/PotionsMerchant' into EventOfek
+| | |     
+| | |     # Conflicts:
+| | |     #       Events/Event.h
+| | |     #       Events/SolarEclipse.h
+| | |     #       Players/Player.cpp
+| | | 
+| | * commit 72d722ebda21635d0d65aaacd857459ae138885f
+| | | Author: pavelrussko <pavelrussko@gmail.com>
+| | | Date:   Wed Aug 7 10:58:44 2024 +0300
+| | | 
+| | |     Add pack descrtiption
+| | | 
+| | |  Events/Encounter.cpp | 1 -
+| | |  Events/Event.h       | 5 ++++-
+| | |  Events/Monster.cpp   | 4 ++++
+| | |  Events/Monster.h     | 1 +
+| | |  Events/Pack.cpp      | 7 ++++++-
+| | |  Events/Pack.h        | 2 ++
+| | |  6 files changed, 17 insertions(+), 3 deletions(-)
+| | | 
+| * | commit 769e15f4ec6e1ccf974ff428aeaad771d00f4d76
+| | | Author: Ofek <ofek5202@gmail.com>
+| | | Date:   Wed Aug 7 12:25:29 2024 +0300
+| | | 
+| | |     add partial function impl for createEvent. update balrog constructor to take nothing
+| | | 
+| | |  Events/Balrog.cpp |  4 ++--
+| | |  Events/Balrog.h   |  5 +++--
+| | |  MatamStory.cpp    | 21 ++++++++++++++++++++-
+| | |  MatamStory.h      |  6 ++++++
+| | |  4 files changed, 31 insertions(+), 5 deletions(-)
+| | | 
+| * | commit 1ac86af17944d489ae43c53a2b2403ab9786feb2
+| | | Author: Ofek <ofek5202@gmail.com>
+| | | Date:   Wed Aug 7 12:14:48 2024 +0300
+| | | 
+| | |     add variables for events and players in MatamStory.h. add events file reading logic in MatamStory.cpp constructor
+| | | 
+| | |  MatamStory.cpp | 12 +++++++++---
+| | |  MatamStory.h   | 18 +++++++++++++-----
+| | |  2 files changed, 22 insertions(+), 8 deletions(-)
+| | | 
+| * | commit 7355a3faca05c45804bd09e3da514dce7f5a720d
+| | | Author: Ofek <ofek5202@gmail.com>
+| | | Date:   Tue Aug 6 23:31:42 2024 +0300
+| | | 
+| | |     fix including errors in header files in event directory
+| | | 
+| | |  Events/Encounter.h | 3 ++-
+| | |  Events/Monster.h   | 5 +++--
+| | |  2 files changed, 5 insertions(+), 3 deletions(-)
+| | | 
+| * | commit 209b75f8e8e38101b71da01ddde51c1d35007177
+| | | Author: Ofek <ofek5202@gmail.com>
+| | | Date:   Tue Aug 6 23:26:31 2024 +0300
+| | | 
+| | |     Add getJob and getDescription decl and impl of all player types.
+| | | 
+| | |  Events/Encounter.cpp  |  1 -
+| | |  Events/Encounter.h    |  5 ++---
+| | |  Events/Event.h        |  2 --
+| | |  Players/Archer.cpp    | 11 ++++++++++-
+| | |  Players/Archer.h      |  2 ++
+| | |  Players/Character.cpp |  8 ++++++++
+| | |  Players/Character.h   |  3 +++
+| | |  Players/Magician.cpp  | 11 +++++++++++
+| | |  Players/Magician.h    |  2 ++
+| | |  Players/Player.cpp    | 11 +++++++++--
+| | |  Players/Player.h      |  6 ++++--
+| | |  Players/Warrior.cpp   | 16 +++++++++++++---
+| | |  Players/Warrior.h     |  5 +++--
+| | |  13 files changed, 67 insertions(+), 16 deletions(-)
+| | | 
+| * | commit 87250227e4f3d123f967ab48f8646d0f70743bea
+| | | Author: Ofek <ofek5202@gmail.com>
+| | | Date:   Tue Aug 6 16:49:09 2024 +0300
+| | | 
+| | |     Add solareclipse decl and impl
+| | | 
+| | |  Events/Event.h          | 10 +++-------
+| | |  Events/SolarEclipse.cpp |  3 +++
+| | |  Events/SolarEclipse.h   |  3 +++
+| | |  3 files changed, 9 insertions(+), 7 deletions(-)
+| | |   
+* | |   commit 64485708a4ca2fdafaba671dc2981f5dfc7bf23b
+|\ \ \  Merge: 8a9ad37 76a5d0a
+| | |/  Author: pavelrussko <51753997+pavelrussko@users.noreply.github.com>
+| |/|   Date:   Tue Aug 6 16:47:46 2024 +0300
+| | |   
+| | |       Merge pull request #2 from ofek512/PotionsMerchant
+| | |       
+| | |       Potions merchant
+| | | 
+| * | commit 76a5d0aac16bffaeb2398dc9525694c35422a9ca
+| | | Author: pavelrussko <pavelrussko@gmail.com>
+| | | Date:   Tue Aug 6 16:47:04 2024 +0300
+| | | 
+| | |     add PotionsMerchant
+| | | 
+| | |  Events/Event.h           | 8 +-------
+| | |  Events/PotionsMerchant.h | 1 -
+| | |  Events/SolarEclipse.h    | 4 ++--
+| | |  3 files changed, 3 insertions(+), 10 deletions(-)
+| | | 
+| * | commit ddc6604d8b27283bc0749dd75bc1477e137e3853
+| |\| Merge: 2c10841 c4ee2da
+| | | Author: pavelrussko <pavelrussko@gmail.com>
+| | | Date:   Tue Aug 6 16:30:15 2024 +0300
+| | | 
+| | |     Merge remote-tracking branch 'origin/EventOfek' into PotionsMerchant
+| | | 
+| | * commit c4ee2da8df20fc8634f57472253fcd2df2756f56
+| | | Author: Ofek <ofek5202@gmail.com>
+| | | Date:   Tue Aug 6 16:27:18 2024 +0300
+| | | 
+| | |     minor changes
+| | | 
+| | |  Events/Event.h          | 6 +++---
+| | |  Events/SolarEclipse.cpp | 2 ++
+| | |  Events/SolarEclipse.h   | 9 +++++++++
+| | |  Events/SpecialEvent.cpp | 1 +
+| | |  Events/SpecialEvent.h   | 7 +++++++
+| | |  Players/Player.h        | 1 +
+| | |  Players/Warrior.h       | 1 +
+| | |  7 files changed, 24 insertions(+), 3 deletions(-)
+| | | 
+| * | commit 2c1084147ad786d9a2c788ab2507e2e45f2317a4
+|/ /  Author: pavelrussko <pavelrussko@gmail.com>
+| |   Date:   Tue Aug 6 16:29:48 2024 +0300
+| |   
+| |       add PotionsMerchant
+| |   
+| |    Events/Event.h             | 1 -
+| |    Events/PotionsMerchant.cpp | 5 +++++
+| |    Events/PotionsMerchant.h   | 9 +++++++++
+| |    Players/Player.cpp         | 8 ++++++--
+| |    Players/Player.h           | 3 +++
+| |    5 files changed, 23 insertions(+), 3 deletions(-)
+| | 
+* | commit 8a9ad3710ab9e69e554e25b02d47e0baffa284ee
+|\| Merge: 46cb0b2 6a090e5
+| | Author: Ofek <ofek5202@gmail.com>
+| | Date:   Tue Aug 6 15:50:15 2024 +0300
+| | 
+| |     Merge remote-tracking branch 'origin/EventOfek'
+| | 
+| * commit 6a090e50ae13527fc1dfdf6677a0f23bb250f52d
+| | Author: Ofek <ofek5202@gmail.com>
+| | Date:   Tue Aug 6 15:48:20 2024 +0300
+| | 
+| |     Merge
+| | 
+| |  Players/Archer.cpp | 3 ++-
+| |  1 file changed, 2 insertions(+), 1 deletion(-)
+| |   
+| *   commit 2127d8e46e4ea6a130cbfabffccbe08e7b8d3d9f
+| |\  Merge: 19ae105 970a453
+| | | Author: Ofek <ofek5202@gmail.com>
+| | | Date:   Tue Aug 6 15:46:41 2024 +0300
+| | | 
+| | |     Merge remote-tracking branch 'origin/Event_P' into EventOfek
+| | |     
+| | |     # Conflicts:
+| | |     #       Events/Event.cpp
+| | |     #       Events/Event.h
+| | | 
+| | * commit 970a4539ba62944cf11b0f7b1ac54a98542ba8e7
+| | | Author: pavelrussko <pavelrussko@gmail.com>
+| | | Date:   Tue Aug 6 15:44:23 2024 +0300
+| | | 
+| | |     Add Encounter
+| | | 
+| | |  Events/Balrog.cpp    | 22 ++++++++++++++++++++++
+| | |  Events/Balrog.h      | 14 ++++++++++++++
+| | |  Events/Encounter.cpp |  2 ++
+| | |  Events/Encounter.h   |  7 +++++++
+| | |  Events/Event.cpp     | 35 -----------------------------------
+| | |  Events/Event.h       | 31 +++----------------------------
+| | |  Events/Monster.cpp   | 29 +++++++++++++++++++++++++++++
+| | |  Events/Monster.h     | 21 +++++++++++++++++++++
+| | |  Events/Pack.cpp      | 10 ++++++++++
+| | |  Events/Pack.h        |  8 ++++++++
+| | |  10 files changed, 116 insertions(+), 63 deletions(-)
+| | | 
+| * | commit 19ae105b896c4ee187516021842dff104efdc7ce
+| |/  Author: Ofek <ofek5202@gmail.com>
+| |   Date:   Tue Aug 6 15:37:48 2024 +0300
+| |   
+| |       Add decl and impl of Warrior and Archer. Add decl and impl of getters for monsters
+| |   
+| |    Events/Event.cpp     | 15 +++++++++++++++
+| |    Events/Event.h       | 12 +++++++++---
+| |    Players/Archer.cpp   |  6 ++++++
+| |    Players/Archer.h     | 15 +++++++++++++++
+| |    Players/Magician.cpp |  5 +++--
+| |    Players/Magician.h   |  6 ++++--
+| |    Players/Player.cpp   |  9 +++++++++
+| |    Players/Player.h     |  4 ++++
+| |    Players/Warrior.cpp  | 21 +++++++++++++++++++++
+| |    Players/Warrior.h    | 14 ++++++++++++++
+| |    10 files changed, 100 insertions(+), 7 deletions(-)
+| | 
+| * commit 317bab1564e8533c9b39ded0c9b9bff89d6737a6
+| | Author: Ofek <ofek5202@gmail.com>
+| | Date:   Tue Aug 6 14:43:55 2024 +0300
+| | 
+| |     minor changes
+| | 
+| |  Players/Character.cpp | 16 ++++++++++++++--
+| |  Players/Character.h   | 17 +++++++++++++----
+| |  Players/Player.cpp    | 19 ++++++++++---------
+| |  Players/Player.h      |  6 ++++--
+| |  4 files changed, 41 insertions(+), 17 deletions(-)
+| | 
+| * commit dc8d8a688331a1ebcd40c0e466544bcd0e6f388a
+| | Author: Ofek <ofek5202@gmail.com>
+| | Date:   Tue Aug 6 14:25:41 2024 +0300
+| | 
+| |     Merge branches
+| | 
+| |  Events/Event.cpp | 14 ++++----------
+| |  Events/Event.h   |  5 +++--
+| |  2 files changed, 7 insertions(+), 12 deletions(-)
+| |   
+| *   commit 7a2ae5204b7800cdeb8bcddc43746ac689c73052
+| |\  Merge: 4ff2160 32415d9
+| | | Author: Ofek <ofek5202@gmail.com>
+| | | Date:   Tue Aug 6 14:24:20 2024 +0300
+| | | 
+| | |     Merge remote-tracking branch 'origin/Player_P' into EventOfek
+| | | 
+| * | commit 4ff21605021ee40aa18b46cd2f92cb93f8e659da
+| | | Author: ofek5 <ofekikosh123@gmail.com>
+| | | Date:   Mon Aug 5 20:41:32 2024 +0300
+| | | 
+| | |     change xPower to 15 in second constructor
+| | | 
+| | |  Events/Event.cpp | 2 +-
+| | |  1 file changed, 1 insertion(+), 1 deletion(-)
+| | | 
+| * | commit 860dbd2da69c1785fad6de54e5059c0b4815badd
+| | | Author: Ofek Yankis <95701220+ofek512@users.noreply.github.com>
+| | | Date:   Mon Aug 5 20:40:23 2024 +0300
+| | | 
+| | |     add constructor impl for Balrog, only string name
+| | | 
+| | |  Events/Event.cpp | 6 ++++++
+| | |  1 file changed, 6 insertions(+)
+| | | 
+| * | commit d4672570102b5dbe704eb8dc983ef414d656b228
+| | | Author: Ofek Yankis <95701220+ofek512@users.noreply.github.com>
+| | | Date:   Mon Aug 5 20:37:54 2024 +0300
+| | | 
+| | |     add constructor decl for Balrog
+| | | 
+| | |  Events/Event.h | 1 +
+| | |  1 file changed, 1 insertion(+)
+| | | 
+| * | commit eee4d9cb440a9844a1940a63243c3738e29d7038
+| | | Author: ofek5 <ofekikosh123@gmail.com>
+| | | Date:   Mon Aug 5 20:36:09 2024 +0300
+| | | 
+| | |     add declaration and impl of Event, Monster and Balrog. Add comments for future checking
+| | | 
+| | |  Events/Event.cpp | 36 ++++++++++++++++++++++++++++++++++++
+| | |  Events/Event.h   | 42 ++++++++++++++++++++++++++++++++++--------
+| | |  2 files changed, 70 insertions(+), 8 deletions(-)
+| | |   
+* | |   commit 46cb0b28725ad78bc1274a2d3f3cd70f0b2d250e
+|\ \ \  Merge: 90b793f 32415d9
+| |/ /  Author: pavelrussko <51753997+pavelrussko@users.noreply.github.com>
+|/| /   Date:   Tue Aug 6 14:20:00 2024 +0300
+| |/    
+| |         Merge pull request #1 from ofek512/Player_P
+| |         
+| |         Add Character
+| | 
+| * commit 32415d9a816bef3cc7f95f4e50bf7f292001d1b1
+|/  Author: pavelrussko <pavelrussko@gmail.com>
+|   Date:   Tue Aug 6 14:19:15 2024 +0300
+|   
+|       Add Character
+|   
+|    Players/Character.cpp |  9 ++++++++
+|    Players/Character.h   | 13 ++++++++++++
+|    Players/Magician.cpp  | 11 ++++++++++
+|    Players/Magician.h    | 11 ++++++++++
+|    Players/Player.cpp    | 53 +++++++++++++++++++++++++++++++++++++++++++++++
+|    Players/Player.h      | 21 ++++++++++++++++++-
+|    6 files changed, 117 insertions(+), 1 deletion(-)
+| 
+* commit 90b793ff0db9a0a09ed4a358f46e321b21a8b5d9
+| Author: pavelrussko <pavelrussko@gmail.com>
+| Date:   Mon Aug 5 14:18:44 2024 +0300
+| 
+|     update changes
+| 
+|  Utilities.cpp | 8 ++++----
+|  1 file changed, 4 insertions(+), 4 deletions(-)
+| 
+* commit 6d0b58bcecef6fc2291c09f654a978cc382c3e31
+| Author: AdiHarif <adi.harif@campus.technion.ac.il>
+| Date:   Mon Jul 29 21:47:45 2024 +0300
+| 
+|     Adds supplied files
+| 
+|  Events/Event.h       |  14 +++++
+|  MatamStory.cpp       |  74 +++++++++++++++++++++++++
+|  MatamStory.h         |  55 +++++++++++++++++++
+|  Players/Player.h     |  51 +++++++++++++++++
+|  Utilities.cpp        | 117 +++++++++++++++++++++++++++++++++++++++
+|  Utilities.h          | 146 +++++++++++++++++++++++++++++++++++++++++++++++++
+|  main.cpp             |  40 ++++++++++++++
+|  tests/test1.events   |   5 ++
+|  tests/test1.expected |  96 ++++++++++++++++++++++++++++++++
+|  tests/test1.players  |   3 +
+|  tests/test2.events   |   4 ++
+|  tests/test2.expected |   1 +
+|  tests/test2.players  |   3 +
+|  tests/test3.events   |   5 ++
+|  tests/test3.expected |   1 +
+|  tests/test3.players  |   2 +
+|  16 files changed, 617 insertions(+)
+| 
+* commit beadb33ed4c7dd2da9d4078b9de6253232c67a46
+  Author: AdiHarif <adi.harif@campus.technion.ac.il>
+  Date:   Mon Jul 29 21:46:59 2024 +0300
+  
+      Initial Commit - Adds README.md file
+  
+   README.md | 7 +++++++
+   1 file changed, 7 insertions(+)
