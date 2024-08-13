@@ -1,11 +1,20 @@
 #include "MatamStory.h"
 #include "Utilities.h"
+#include <iostream>
+#include <sstream>
+#include <stdexcept>
 
-MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) {
+MatamStory::MatamStory(std::istream &eventsStream,
+                       std::istream &playersStream) {
     std::string eventLine;
     while (std::getline(eventsStream, eventLine)) {
         if (!eventLine.empty()) {
-            events.push_back(EventFactory::createEvent(eventLine));
+            auto event = EventFactory::createEvent(eventLine);
+            if (event) {
+                events.push_back(std::move(event));
+            } else {
+                throw std::runtime_error("Invalid event format in events file");
+            }
         }
     }
 
@@ -14,21 +23,30 @@ MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) 
         if (!playerLine.empty()) {
             std::istringstream iss(playerLine);
             std::string name, job, character;
-            if(!(iss >> name >> job >> character)) {
-                std::cout << "Invalid Players File" << std::endl;
-                exit(1);
+            if (!(iss >> name >> job >> character)) {
+                throw std::runtime_error(
+                        "Invalid player format in players file");
             }
-            std::shared_ptr<Player> player = PlayerFactory::createPlayer(name, job, character);
-            players.push_back(player);
-            sortedPlayers.push_back(player);
+            try {
+                auto player = PlayerFactory::createPlayer(name, job, character);
+                if (player) {
+                    players.push_back(std::move(player));
+                    sortedPlayers.push_back(players.back());
+                } else {
+                    throw std::runtime_error(
+                            "Invalid player data in players file");
+                }
+            } catch (const std::runtime_error &e) {
+                throw std::runtime_error("Invalid player data in players file");
+            }
         }
     }
 
     this->m_turnIndex = 1;
 }
 
-void MatamStory::playTurn(shared_ptr<Player> player) {
-    std::unique_ptr<Event> event = std::move(events.front());
+void MatamStory::playTurn(std::shared_ptr<Player> player) {
+    auto event = std::move(events.front());
     events.pop_front();
     printTurnDetails(m_turnIndex++, *player, *event);
     event->runEvent(player);
@@ -40,8 +58,10 @@ void MatamStory::playRound() {
 
     for (auto it = players.begin(); it != players.end();) {
         playTurn(*it);
-        if ((*it)->getHealthPoints() == 0) {
-            it = players.erase(it);  // Erase returns the iterator to the next element
+        if ((*it)->getHealthPoints() <=
+            0) {  // Ensure health is <= 0 to remove the player
+            it = players.erase(
+                    it);  // Erase returns the iterator to the next element
         } else {
             ++it;  // Move to the next element if not erased
         }
@@ -55,7 +75,7 @@ void MatamStory::playRound() {
     printLeaderBoardMessage();
 
     int counter = 1;
-    for (const auto &sortedPlayer : sortedPlayers) {
+    for (const auto &sortedPlayer: sortedPlayers) {
         printLeaderBoardEntry(counter++, *sortedPlayer);
     }
 
@@ -63,7 +83,8 @@ void MatamStory::playRound() {
 }
 
 bool MatamStory::isGameOver() const {
-    return players.empty() || sortedPlayers.back()->getLevel() == 10;
+    return players.empty() || sortedPlayers.back()->getLevel() >=
+                              10;  // Use >= for inclusive check
 }
 
 void MatamStory::play() {
@@ -81,18 +102,23 @@ void MatamStory::play() {
 
     printGameOver();
 
-    if (!sortedPlayers.empty() && sortedPlayers.back()->getLevel() == 10) {
+    if (!sortedPlayers.empty() &&
+        sortedPlayers.back()->getLevel() >= 10) {  // Use >= for inclusive check
         printWinner(*sortedPlayers.back());
     } else {
         printNoWinners();
     }
 }
 
-bool MatamStory::ComparePlayers(const std::shared_ptr<Player> &p1, const std::shared_ptr<Player> &p2) {
+bool MatamStory::ComparePlayers(const std::shared_ptr<Player> &p1,
+                                const std::shared_ptr<Player> &p2) {
     if (p1->getLevel() != p2->getLevel()) {
-        return p1->getLevel() > p2->getLevel();  // Compare levels in descending order
+        return p1->getLevel() >
+               p2->getLevel();  // Compare levels in descending order
     } else if (p1->getCoins() != p2->getCoins()) {
-        return p1->getCoins() > p2->getCoins();  // Compare coins in descending order
+        return p1->getCoins() >
+               p2->getCoins();  // Compare coins in descending order
     }
-    return p1->getName() < p2->getName();  // Lexicographical comparison of names in ascending order
+    return p1->getName() <
+           p2->getName();  // Lexicographical comparison of names in ascending order
 }
