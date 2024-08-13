@@ -27,10 +27,11 @@ void RiskTaker::buyPotion(Player &player) {
         player.getHealthPoints() < 50) {
         player.setCoins(player.getCoins() - 5);
         player.setCurrent_HP(player.getHealthPoints() + 5);
-        printTurnOutcome(getPotionsPurchaseMessage(player, 0));
+        printTurnOutcome(getPotionsPurchaseMessage(player, 1));
         return;
+    } else {
+        printTurnOutcome(getPotionsPurchaseMessage(player, 0));
     }
-    printTurnOutcome(getPotionsPurchaseMessage(player, 1));
 }
 
 Responsible::Responsible() : Character("Responsible") {}
