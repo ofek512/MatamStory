@@ -4,3 +4,7 @@
 void PotionsMerchant::runEvent(shared_ptr<Player> player) {
     player->getCharacter()->buyPotion(*player);
 }
+
+string PotionsMerchant::getDescription() const {
+    return "PotionsMerchant";
+}
