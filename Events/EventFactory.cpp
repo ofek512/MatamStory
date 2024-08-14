@@ -14,7 +14,6 @@ std::unique_ptr<Event> EventFactory::createEvent(const std::string& eventLine) {
     std::string eventName;
     stream >> eventName;
 
-    // Create a map of event names to lambda expressions that create the events
     static const std::unordered_map<std::string, std::function<std::unique_ptr<Event>()>> eventCreators = {
         {"Snail", []() { return std::make_unique<Monster>("Snail", 5, 2, 10); }},
         {"Slime", []() { return std::make_unique<Monster>("Snail", 12, 5, 25); }},
@@ -25,9 +24,9 @@ std::unique_ptr<Event> EventFactory::createEvent(const std::string& eventLine) {
 
     auto it = eventCreators.find(eventName);
     if (it != eventCreators.end()) {
-        return it->second();  // Call the lambda to create the event
+        return it->second();
     } else if (eventName == "Pack") {
-        return parsePack(stream);  // Special handling for Pack
+        return parsePack(stream);
     } else {
         throw std::runtime_error("Invalid Events File");
     }
