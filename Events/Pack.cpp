@@ -19,3 +19,10 @@ std::string Pack::getDescription() const {
            ", loot " + std::to_string(loot) + ", damage " +
            std::to_string(damage) + ")";
 }
+
+void Pack::runEvent(shared_ptr<Player> player) {
+    Monster::runEvent(player);
+    for (int i = 0; i < size; ++i) {
+        monsters[i].afterfight();
+    }
+}

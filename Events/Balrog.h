@@ -5,5 +5,5 @@
 class Balrog : public Monster {
 public:
     Balrog();
-    void runEvent(shared_ptr<Player>) override;
+    void afterfight() override;
 };

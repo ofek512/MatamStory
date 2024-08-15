@@ -1,7 +1,6 @@
 #include "Monster.h"
 
 
-
 // Monster Constructor
 Monster::Monster(string xName, unsigned int xPower, unsigned int xLoot,
                  unsigned int xDamage)
@@ -20,6 +19,7 @@ void Monster::runEvent(shared_ptr<Player> player) {
         player->setCurrent_HP(player->getHealthPoints() - getDamage());
         printTurnOutcome(getEncounterLostMessage(*player, getDamage()));
     }
+    afterfight();//monster after fight effects
 }
 
 int Monster::getDamage() const {
@@ -36,5 +36,8 @@ int Monster::getPower() {
 
 string Monster::getDescription() const {
     return name + " (power " + std::to_string(power) + ", loot " +
-    std::to_string(loot) + ", damage " + std::to_string(damage) + ")";
+           std::to_string(loot) + ", damage " + std::to_string(damage) + ")";
+}
+
+void Monster::afterfight() {
 }

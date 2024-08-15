@@ -1,10 +1,15 @@
 #include "EventFactory.h"
 
+using std::string;
+using std::istringstream;
 
-std::unique_ptr<Event> parsePack(std::istringstream &stream) {
+std::unique_ptr<Event> parsePack(istringstream &stream) {
     int packSize;
-    stream >> packSize;
-
+    try {
+        stream >> packSize;
+    } catch (...) {
+        throw std::runtime_error("Invalid Events File");
+    }
     std::vector<std::unique_ptr<Monster>> monsters;
 
     for (int i = 0; i < packSize; ++i) {
@@ -14,7 +19,7 @@ std::unique_ptr<Event> parsePack(std::istringstream &stream) {
         if (subEvent == "Pack") {
             auto subPack = parsePack(stream);
             monsters.push_back(std::unique_ptr<Monster>(
-                    dynamic_cast<Pack*>(subPack.get())));
+                    dynamic_cast<Pack *>(subPack.get())));
         } else if (subEvent == "Snail") {
             monsters.push_back(std::make_unique<Monster>("Snail", 5, 2, 10));
         } else if (subEvent == "Slime") {
@@ -34,24 +39,30 @@ std::unique_ptr<Event> parsePack(std::istringstream &stream) {
     return std::make_unique<Pack>(monsterArray.get(), monsters.size());
 }
 
-std::unique_ptr<Event> EventFactory::createEvent(const std::string& eventLine) {
-    std::istringstream stream(eventLine);
-    std::string eventName;
+std::unique_ptr<Event> EventFactory::createEvent(const std::string &eventLine) {
+    istringstream stream(eventLine);
+    string eventName;
+    string tester;
     stream >> eventName;
 
-    if (eventName == "Snail") {
-        return std::make_unique<Monster>("Snail", 5, 2, 10);
-    } else if (eventName == "Slime") {
-        return std::make_unique<Monster>("Slime", 12, 5, 25);
-    } else if (eventName == "Pack") {
+    if (eventName == "Pack") {
         return parsePack(stream);
-    } else if (eventName == "Balrog") {
-        return std::make_unique<Balrog>();
-    } else if (eventName == "SolarEclipse") {
-        return std::make_unique<SolarEclipse>();
-    } else if (eventName == "PotionsMerchant") {
-        return std::make_unique<PotionsMerchant>();
-    } else {
+    }
+    if (stream >> tester) {
         throw std::runtime_error("Invalid Events File");
+    } else {
+        if (eventName == "Slime") {
+            return std::make_unique<Monster>("Slime", 12, 5, 25);
+        } else if (eventName == "Snail") {
+            return std::make_unique<Monster>("Snail", 5, 2, 10);
+        } else if (eventName == "Balrog") {
+            return std::make_unique<Balrog>();
+        } else if (eventName == "SolarEclipse") {
+            return std::make_unique<SolarEclipse>();
+        } else if (eventName == "PotionsMerchant") {
+            return std::make_unique<PotionsMerchant>();
+        } else {
+            throw std::runtime_error("Invalid Events File");
+        }
     }
 }

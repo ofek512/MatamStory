@@ -10,4 +10,5 @@ private:
 public:
     Pack(Monster *monstersArray, int size);
     std::string getDescription() const override;
+    void runEvent(shared_ptr<Player>) override;
 };
