@@ -13,7 +13,14 @@ MatamStory::MatamStory(std::istream &eventsStream,
     if (eventsStream.peek() == std::istream::traits_type::eof()) {
         throw std::runtime_error("Invalid Players File");
     }
-    while (std::getline(eventsStream, eventLine)) {
+
+    while(!eventsStream.eof()){
+        std::string eventName;
+        eventsStream >> eventName;
+        events.push_back(EventFactory::generateEvent(eventName, eventsStream));
+    }
+
+/*    while (std::getline(eventsStream, eventLine)) {
         if (!eventLine.empty()) {
             auto event = EventFactory::createEvent(eventLine);
             if (event) {
@@ -22,7 +29,7 @@ MatamStory::MatamStory(std::istream &eventsStream,
                 throw std::runtime_error("Invalid Events File");
             }
         }
-    }
+    }*/
 
     std::string playerLine;
     while (std::getline(playersStream, playerLine)) {

@@ -10,5 +10,6 @@
 
 class EventFactory {
 public:
-    static std::unique_ptr<Event> createEvent(const std::string& eventLine);
+    //static std::unique_ptr<Event> createEvent(const std::string& eventLine);
+    static std::unique_ptr<Event> generateEvent(const std::string& eventName, std::istream& input);
 };

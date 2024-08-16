@@ -1,4 +1,6 @@
+#include <stdexcept>
 #include "Pack.h"
+#include <vector>
 
 Pack::Pack(Monster *monstersArray, int size) : Monster("Pack", 0, 0, 0),
                                                size(size) {
@@ -26,3 +28,4 @@ void Pack::runEvent(shared_ptr<Player> player) {
         monsters[i].afterfight();
     }
 }
+
