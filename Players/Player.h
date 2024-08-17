@@ -4,6 +4,7 @@
 #include <memory>
 
 class Character;  // Forward declaration to avoid circular dependency
+class Job;
 
 using std::string;
 using std::shared_ptr;
@@ -17,16 +18,18 @@ protected:
  int Current_HP;
  int Max_HP;
  shared_ptr<Character> character;  // Use smart pointer to manage Character
+ shared_ptr<Job> job;
 
 public:
  Player(string Name, shared_ptr<Character> character);
+ Player(string Name, shared_ptr<Character>, shared_ptr<Job>);
 
- virtual ~Player() = default;  // Virtual destructor to ensure proper cleanup
- virtual void afterFight();
+ ~Player() = default;  // Virtual destructor to ensure proper cleanup
+ void afterFight(); //to job
  bool operator<(const Player &other) const;
 
- virtual string getJob() const;
- virtual string getDescription() const;
+ string getJob() const; //to job
+ string getDescription() const; //change
 
  void buyPotion();
 
@@ -37,12 +40,13 @@ public:
  int getHealthPoints() const;
  int getCoins() const;
 
- virtual void doEclipse();
- virtual int getCombatPower() const;
+ void doEclipse();
+ int getCombatPower(); //to job
 
- void setCoins(int);
- void setCurrent_HP(int);
+ void setCoins(int); //add to job
+ void setCurrent_HP(int); //add to job
  int getMax_HP() const;
  shared_ptr<Character> getCharacter();
  void setForce(int);
+ void setMaxHP(int);
 };

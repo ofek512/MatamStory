@@ -1,24 +1,44 @@
 #include "PlayerFactory.h"
+#include <map>
+#include <functional>
 #include <iostream>
 
-std::shared_ptr<Player> PlayerFactory::createPlayer(const std::string& name, const std::string& job, const std::string& character) {
-    std::shared_ptr<Character> charPtr;
 
-    if (character == "RiskTaking") {
-        charPtr = std::make_shared<RiskTaker>();
-    } else if (character == "Responsible") {
-        charPtr = std::make_shared<Responsible>();
-    } else {
-        throw std::runtime_error("Invalid Players File");
-    }
 
-    if (job == "Warrior") {
-        return std::make_shared<Warrior>(name, charPtr);
-    } else if (job == "Archer") {
-        return std::make_shared<Archer>(name, charPtr);
-    } else if (job == "Magician") {
-        return std::make_shared<Magician>(name, charPtr);
-    } else {
-        throw std::runtime_error("Invalid Players File");
+const std::map<std::string, std::function<std::shared_ptr<Job>()>> jobFactory = {
+        {"Warrior", []() {return std::make_shared<Warrior>();}},
+        {"Archer", []() {return std::make_shared<Archer>();}},
+        {"Magician", []() {return std::make_shared<Magician>();}}
+};
+
+const std::map<std::string, std::function<std::shared_ptr<Character>()>> characterFactory = {
+        {"Responsible", []() {return std::make_shared<Responsible>();}},
+        {"RiskTaking", []() {return std::make_shared<RiskTaker>();}}
+};
+
+auto getCharacterFactory(const std::map<std::string, std::function<std::shared_ptr<Character>()>>& map,
+                         const string& key){
+    auto it = map.find(key);
+    if(it == map.end()) {
+        throw std::runtime_error(key + "not found");
     }
+    return it->second;
 }
+
+std::function<std::shared_ptr<Job>()> getJobFactory(const std::map<std::string, std::function<std::shared_ptr<Job>()>>& map,
+                   const string& key){
+    auto it = map.find(key);
+    if(it == map.end()) {
+        throw std::runtime_error(key + "not found");
+    }
+    return it->second;
+}
+
+std::shared_ptr<Job> PlayerFactory::generateJob(const std::string& jobName) {
+    return getJobFactory(jobFactory, jobName)();
+}
+
+std::shared_ptr<Character> PlayerFactory::generateCharacter(const std::string& characterName) {
+    return getCharacterFactory(characterFactory, characterName)();
+}
+

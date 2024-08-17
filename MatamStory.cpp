@@ -41,7 +41,7 @@ MatamStory::MatamStory(std::istream &eventsStream,
                         "Invalid Players File");
             }
             try {
-                auto player = PlayerFactory::createPlayer(name, job, character);
+                auto player = std::make_shared<Player>(name, PlayerFactory::generateCharacter(character), PlayerFactory::generateJob(job));
                 if (player) {
                     players.push_back(std::move(player));
                     sortedPlayers.push_back(players.back());
