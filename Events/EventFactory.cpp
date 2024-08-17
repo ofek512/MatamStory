@@ -47,7 +47,7 @@ auto getEventFactory(const std::map<std::string, std::function<std::unique_ptr<E
                                        const string& key){
     auto it = map.find(key);
     if(it == map.end()) {
-        throw std::runtime_error(key + "not found");
+        throw std::runtime_error("Invalid Events File");
     }
     return it->second;
 }
