@@ -24,8 +24,9 @@ std::string Pack::getDescription() const {
 
 void Pack::runEvent(shared_ptr<Player> player) {
     Monster::runEvent(player);
-    for (int i = 0; i < size; ++i) {
+    for (int i = 0; i < size; ++i) { //recalculate the pack power
         monsters[i].afterfight();
+        power += monsters[i].getPower();
     }
 }
 
