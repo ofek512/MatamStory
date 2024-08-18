@@ -5,11 +5,10 @@
 
 class Pack : public Monster {
 private:
-    std::vector<std::unique_ptr<Monster>> monsters; // Array of Monsters
-    int size;
+    std::vector<std::unique_ptr<Monster>> monsters; // Vector of Monster pointers
 
 public:
-    Pack(Monster *monstersArray, int size);
+    Pack(std::vector<std::unique_ptr<Monster>> monsters);
     std::string getDescription() const override;
-    void runEvent(shared_ptr<Player>) override;
+    void runEvent(std::shared_ptr<Player>) override;
 };
