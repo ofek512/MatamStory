@@ -124,7 +124,7 @@ void MatamStory::play() {
 
     if (!sortedPlayers.empty() &&
         sortedPlayers.back()->getLevel() >= 10) {  // Use >= for inclusive check
-        printWinner(*sortedPlayers.back());
+        printWinner(*sortedPlayers.front());
     } else {
         printNoWinners();
     }
