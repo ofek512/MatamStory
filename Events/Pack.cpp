@@ -4,14 +4,14 @@
 
 Pack::Pack(Monster *monstersArray, int size) : Monster("Pack", 0, 0, 0),
                                                size(size) {
-    monsters = std::make_unique<Monster[]>(size);
-
+    for (int i = 0; i < size; ++i) {
+        monsters.push_back(std::make_unique<Monster>(monstersArray[i]));
+    }
     // Initialize the monsters array and calculate aggregated values
     for (int i = 0; i < size; ++i) {
-        monsters[i] = monstersArray[i]; // Copy each Monster
-        power += monsters[i].getPower();
-        loot += monsters[i].getLoot();
-        damage += monsters[i].getDamage();
+        power += monsters[i]->getPower();
+        loot += monsters[i]->getLoot();
+        damage += monsters[i]->getDamage();
     }
 }
 
@@ -24,9 +24,10 @@ std::string Pack::getDescription() const {
 
 void Pack::runEvent(shared_ptr<Player> player) {
     Monster::runEvent(player);
+    power = 0;
     for (int i = 0; i < size; ++i) { //recalculate the pack power
-        monsters[i].afterfight();
-        power += monsters[i].getPower();
+        monsters[i]->afterfight();
+        power += monsters[i]->getPower();
     }
 }
 

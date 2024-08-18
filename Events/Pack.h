@@ -1,10 +1,11 @@
 #pragma once
 
 #include "Monster.h"
+#include <vector>
 
 class Pack : public Monster {
 private:
-    std::unique_ptr<Monster[]> monsters; // Array of Monsters
+    std::vector<std::unique_ptr<Monster>> monsters; // Array of Monsters
     int size;
 
 public:

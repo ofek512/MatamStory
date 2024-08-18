@@ -14,7 +14,7 @@ MatamStory::MatamStory(std::istream &eventsStream,
         throw std::runtime_error("Invalid Players File");
     }
 
-    while(!eventsStream.eof()){
+    while (!eventsStream.eof()) {
         std::string eventName;
         eventsStream >> eventName;
         events.push_back(EventFactory::generateEvent(eventName, eventsStream));
@@ -41,7 +41,14 @@ MatamStory::MatamStory(std::istream &eventsStream,
                         "Invalid Players File");
             }
             try {
-                auto player = std::make_shared<Player>(name, PlayerFactory::generateCharacter(character), PlayerFactory::generateJob(job));
+                if (name.size() < 3 || name.size() > 15) {
+                    throw std::runtime_error("Invalid Players File");
+                }
+                auto player = std::make_shared<Player>(name,
+                                                       PlayerFactory::generateCharacter(
+                                                               character),
+                                                       PlayerFactory::generateJob(
+                                                               job));
                 if (player) {
                     players.push_back(std::move(player));
                     sortedPlayers.push_back(players.back());
@@ -96,7 +103,7 @@ void MatamStory::playRound() {
 }
 
 bool MatamStory::isGameOver() const {
-    return players.empty() || sortedPlayers.back()->getLevel() >=
+    return players.empty() || sortedPlayers.front()->getLevel() >=
                               10;  // Use >= for inclusive check
 }
 
